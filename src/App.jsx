@@ -30,6 +30,7 @@ import {
 } from 'lucide-react'
 import { SceneCanvas } from './components/SceneCanvas.jsx'
 import { DemoModal } from './components/DemoModal.jsx'
+import { RealWorldShowcase } from './components/RealWorldShowcase.jsx'
 import { capabilities, demos } from './data.js'
 
 const iconMap = {
@@ -97,7 +98,8 @@ function App() {
         <div className="nav-shell">
           <Logo />
           <nav className={menuOpen ? 'site-nav is-open' : 'site-nav'} aria-label="Primary navigation">
-            <a href="#work" onClick={closeMenu}>Showcase</a>
+            <a href="#real-sites" onClick={closeMenu}>Real Sites</a>
+            <a href="#work" onClick={closeMenu}>3D Lab</a>
             <a href="#capabilities" onClick={closeMenu}>Capabilities</a>
             <a href="#process" onClick={closeMenu}>Process</a>
             <a href="#contact" onClick={closeMenu}>Contact</a>
@@ -123,11 +125,11 @@ function App() {
               SatiTech creates immersive 3D websites, real-time digital products and conversion-focused experiences for modern businesses.
             </motion.p>
             <motion.div className="hero-actions" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.28, duration: 0.65 }}>
-              <a className="button button-primary" href="#work">Explore live demos <ArrowDownRight size={18} /></a>
+              <a className="button button-primary" href="#real-sites">Explore real websites <ArrowDownRight size={18} /></a>
               <a className="button button-ghost" href="https://wa.me/919131043573?text=Hi%20SatiTech%2C%20I%20would%20like%20to%20discuss%20a%20website%20for%20my%20business." target="_blank" rel="noreferrer">Start a project <ArrowUpRight size={17} /></a>
             </motion.div>
             <motion.div className="hero-proof" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
-              <span><Check size={15} /> Original 3D visuals</span>
+              <span><Check size={15} /> Real photos & video</span>
               <span><Check size={15} /> Mobile responsive</span>
               <span><Check size={15} /> Performance focused</span>
             </motion.div>
@@ -141,7 +143,7 @@ function App() {
           </motion.div>
 
           <div className="hero-stats">
-            <div><strong>12</strong><span>Interactive industries</span></div>
+            <div><strong>08</strong><span>Full real-world sites</span></div>
             <div><strong>3D</strong><span>Browser-native visuals</span></div>
             <div><strong>100%</strong><span>Responsive experience</span></div>
             <div><strong>24/7</strong><span>Digital sales presence</span></div>
@@ -154,11 +156,13 @@ function App() {
           </div>
         </div>
 
+        <RealWorldShowcase />
+
         <section className="work section-shell" id="work">
           <motion.div className="section-heading" variants={reveal} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.4 }}>
             <div>
-              <span className="eyebrow">Selected experiences</span>
-              <h2>One studio. Twelve industries.</h2>
+              <span className="eyebrow">Interactive 3D capability lab</span>
+              <h2>Twelve industries. Browser-native 3D.</h2>
             </div>
             <p>Open any demo to change its visual style, inspect live simulated data and interact with the 3D scene.</p>
           </motion.div>

@@ -3,13 +3,30 @@
 [![Quality checks](https://github.com/satitech-official/satitech-showcase/actions/workflows/ci.yml/badge.svg)](https://github.com/satitech-official/satitech-showcase/actions/workflows/ci.yml)
 [![Deploy to GitHub Pages](https://github.com/satitech-official/satitech-showcase/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/satitech-official/satitech-showcase/actions/workflows/deploy-pages.yml)
 
-An original, browser-native showcase of the interactive website experiences **SatiTech** can design and develop for modern businesses.
+An original, browser-native showcase of the complete real-world websites and interactive experiences **SatiTech** can design and develop for modern businesses.
 
 **[Explore the live showcase →](https://satitech-official.github.io/satitech-showcase/)**
 
 ![SatiTech Interactive Showcase](public/og-cover.svg)
 
-## Experiences included
+## Complete real-world sample websites
+
+Eight full-page responsive concepts use real licensed photography, selected commercial-use video and working customer journeys:
+
+| Concept | Industry | Working interactions |
+| --- | --- | --- |
+| Ember & Oak | Restaurant | Menu filters, table request, WhatsApp, gallery and video controls |
+| Iron Pulse | Gym | Program filters, trial booking, schedules and video controls |
+| Northstar Academy | Education | Admissions, academics, campus content and enquiry flow |
+| Terra Trails | Travel | Package filters, trip planner, gallery and destination video |
+| Verdant Estates | Real estate | Unit filters, site-visit request, maps and gallery |
+| Aurelia House | Jewellery | Collection filters, image lightbox and consultation request |
+| Nivara Clinic | Healthcare | Service filters, appointment request, call and directions |
+| NextPlay Academy | Sports | Player pathways, registration, fixtures-ready content and trials |
+
+Every concept includes working navigation, live interface states, filters, media galleries, call/email/map actions and a form that opens a pre-filled SatiTech WhatsApp enquiry. All showcased brand identities are fictional and original.
+
+## Interactive 3D experiences
 
 | Experience | Industry | Demonstrated capabilities |
 | --- | --- | --- |
@@ -37,7 +54,9 @@ Each of the twelve demos opens as an interactive studio. Visitors can orbit the 
 - ESLint quality checks
 - GitHub Actions CI and Pages deployment
 
-No third-party photographs or commercial 3D models are used. The visual scenes are procedurally assembled from original geometry in the browser.
+The 3D capability lab uses no third-party photographs or commercial 3D models. Its visual scenes are procedurally assembled from original geometry in the browser.
+
+The real-world concept sites use photography served by Unsplash under the Unsplash License and selected video served by Coverr with commercial-use rights. Production client projects should replace this demonstration media with client-approved assets.
 
 ## Local development
 
@@ -62,9 +81,12 @@ Node.js 22 or newer is recommended.
 src/
 ├── components/
 │   ├── DemoModal.jsx       # Interactive control studio and live UI
+│   ├── RealWorldShowcase.jsx # Eight complete real-world website concepts
 │   └── SceneCanvas.jsx     # Twelve procedural Three.js experiences
 ├── App.jsx                 # Showcase page and conversion journeys
 ├── data.js                 # Industry experience content
+├── realWorldData.js        # Real-world website content and licensed media URLs
+├── real-world.css          # Responsive website-concept visual system
 └── styles.css              # Responsive visual system
 ```
 
