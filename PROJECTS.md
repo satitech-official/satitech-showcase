@@ -1,0 +1,53 @@
+# Sati Technologies Project Registry
+
+This registry tracks projects that are published, under development or waiting for source-code intake.
+
+## Published or connected repositories
+
+| Project | Repository | Classification | Status | Next requirement |
+| --- | --- | --- | --- | --- |
+| SatiTech Interactive Showcase | `satitech-showcase` | Internal Product | Live | Maintain demos and deployment checks |
+| Chaat Adda Café Experience | `chaat-adda-cafe-site` | Portfolio Demo | Connected | Add approved live URL and screenshots |
+| India’s Got Latent Fan Experience | `indias-got-latent-site` | Unofficial Fan Experience | Private shell | Upload reviewed source and approved media |
+
+## Local Codex projects awaiting GitHub intake
+
+The following known projects require their actual local source folders to be pushed or made accessible before a complete repository can be published:
+
+- Sati Technologies official website
+- Veena Vadini Public School website
+- RKP Black Gold Gym website
+- Mamaji Jewellers website
+- RR Tourism website
+- YSDFI sports platform
+- YSDA football platform
+- Room rental platform
+- Sai Mart e-commerce platform
+- Drishti Verma portfolio
+- Restaurant, gym, jewellery, school, tourism and healthcare demo sites
+
+## Intake checklist
+
+Before adding any project to the organization:
+
+1. Confirm the project folder and ownership.
+2. Remove `.env`, API keys, tokens, private customer records and generated dependencies.
+3. Confirm licensing or permission for logos, photos, videos, fonts and written content.
+4. Run lint and production build.
+5. Add a project classification and disclaimer.
+6. Add screenshots and an approved live demo.
+7. Create the repository under `satitech-official`.
+8. Open a pull request for review instead of pushing unreviewed work directly to `main`.
+9. Add the project to the showcase after the repository and demo are verified.
+
+## Naming convention
+
+Use lowercase kebab-case names that explain the project clearly, for example:
+
+- `veena-vadini-school-website`
+- `rkp-black-gold-gym`
+- `mamaji-jewellers-website`
+- `rr-tourism-website`
+- `ysdfi-sports-platform`
+
+Avoid unclear names such as `project-final`, `website-new` or `demo2`.
