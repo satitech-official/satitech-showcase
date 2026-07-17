@@ -10,6 +10,12 @@ function useLiveMetrics(type) {
     if (type === 'real-estate') return { primary: 42, secondary: 18, tertiary: 7 }
     if (type === 'hospitality') return { primary: 73, secondary: 16, tertiary: 4.9 }
     if (type === 'events') return { primary: 1240, secondary: 86, tertiary: 12 }
+    if (type === 'education') return { primary: 428, secondary: 37, tertiary: 8 }
+    if (type === 'fitness') return { primary: 164, secondary: 28, tertiary: 14 }
+    if (type === 'healthcare') return { primary: 32, secondary: 11, tertiary: 6 }
+    if (type === 'travel') return { primary: 87, secondary: 24, tertiary: 9 }
+    if (type === 'jewellery') return { primary: 112, secondary: 19, tertiary: 7 }
+    if (type === 'sports') return { primary: 680, secondary: 42, tertiary: 16 }
     return { primary: 96, secondary: 31, tertiary: 8 }
   }, [type])
   const [metrics, setMetrics] = useState(initial)
@@ -33,7 +39,19 @@ function MetricStrip({ type, metrics }) {
     ? [['₹' + metrics.primary.toFixed(1) + 'K', 'Live revenue'], [metrics.secondary.toFixed(1) + '%', 'System health'], [metrics.tertiary, 'Active workflows']]
     : type === 'commerce'
       ? [[Math.round(metrics.primary), 'Viewing now'], [metrics.secondary.toFixed(1) + '%', 'Conversion'], [metrics.tertiary, 'Orders today']]
-      : [[Math.round(metrics.primary), 'Live sessions'], [Math.round(metrics.secondary), 'Enquiries'], [metrics.tertiary, 'Updates']]
+      : type === 'education'
+        ? [[Math.round(metrics.primary), 'Active learners'], [Math.round(metrics.secondary), 'Enquiries'], [metrics.tertiary, 'New notices']]
+        : type === 'fitness'
+          ? [[Math.round(metrics.primary), 'Active members'], [Math.round(metrics.secondary), 'Trial leads'], [metrics.tertiary, 'Classes today']]
+          : type === 'healthcare'
+            ? [[Math.round(metrics.primary), 'Appointments'], [Math.round(metrics.secondary), 'Doctors online'], [metrics.tertiary, 'Open slots']]
+            : type === 'travel'
+              ? [[Math.round(metrics.primary), 'Trip views'], [Math.round(metrics.secondary), 'Enquiries'], [metrics.tertiary, 'Live packages']]
+              : type === 'jewellery'
+                ? [[Math.round(metrics.primary), 'Collection views'], [Math.round(metrics.secondary), 'Enquiries'], [metrics.tertiary, 'New arrivals']]
+                : type === 'sports'
+                  ? [[Math.round(metrics.primary), 'Live viewers'], [Math.round(metrics.secondary), 'Registrations'], [metrics.tertiary, 'Fixtures']]
+                  : [[Math.round(metrics.primary), 'Live sessions'], [Math.round(metrics.secondary), 'Enquiries'], [metrics.tertiary, 'Updates']]
 
   return (
     <div className="demo-metrics" aria-label="Live simulated metrics">

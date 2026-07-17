@@ -19,8 +19,14 @@ An original, browser-native showcase of the interactive website experiences **Sa
 | Live Intelligence | SaaS | Streaming metrics, operational dashboards, data visualisation |
 | Digital Stage | Events | Event launches, registrations, schedules and media experiences |
 | Future Brand World | Brands | Art direction, motion systems and immersive brand storytelling |
+| Connected Campus | Education | Admissions, notices, results and bilingual campus journeys |
+| Performance Arena | Fitness | Programs, trainers, memberships and trial bookings |
+| Digital Care Desk | Healthcare | Doctors, services, appointments and patient guidance |
+| Journey Explorer | Travel | Packages, trip planning, maps and booking journeys |
+| Luxury Collection Room | Jewellery & fashion | Collections, lookbooks and premium product discovery |
+| Live Sports Hub | Sports | Registrations, fixtures, live results and academy content |
 
-Each demo opens as an interactive studio. Visitors can orbit the 3D scene, change its colour, adjust its visual energy and switch presentation modes. The live values are transparent UI simulations; production client work connects to secure APIs, databases and content systems.
+Each of the twelve demos opens as an interactive studio. Visitors can orbit the 3D scene, change its colour, adjust its visual energy and switch presentation modes. The live values are transparent UI simulations; production client work connects to secure APIs, databases and content systems.
 
 ## Technology
 
@@ -56,7 +62,7 @@ Node.js 22 or newer is recommended.
 src/
 ├── components/
 │   ├── DemoModal.jsx       # Interactive control studio and live UI
-│   └── SceneCanvas.jsx     # Six procedural Three.js experiences
+│   └── SceneCanvas.jsx     # Twelve procedural Three.js experiences
 ├── App.jsx                 # Showcase page and conversion journeys
 ├── data.js                 # Industry experience content
 └── styles.css              # Responsive visual system

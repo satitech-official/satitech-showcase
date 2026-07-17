@@ -11,13 +11,19 @@ import {
   ChevronRight,
   CircleDot,
   Code2,
+  Dumbbell,
+  Gem,
   Globe2,
+  GraduationCap,
+  HeartPulse,
   Layers3,
   Menu,
+  Plane,
   Radio,
   Rocket,
   Sparkles,
   Store,
+  Trophy,
   UtensilsCrossed,
   X,
   Zap,
@@ -33,6 +39,12 @@ const iconMap = {
   saas: BarChart3,
   events: Sparkles,
   brands: Layers3,
+  education: GraduationCap,
+  fitness: Dumbbell,
+  healthcare: HeartPulse,
+  travel: Plane,
+  jewellery: Gem,
+  sports: Trophy,
 }
 
 const reveal = {
@@ -129,7 +141,7 @@ function App() {
           </motion.div>
 
           <div className="hero-stats">
-            <div><strong>06</strong><span>Interactive industries</span></div>
+            <div><strong>12</strong><span>Interactive industries</span></div>
             <div><strong>3D</strong><span>Browser-native visuals</span></div>
             <div><strong>100%</strong><span>Responsive experience</span></div>
             <div><strong>24/7</strong><span>Digital sales presence</span></div>
@@ -146,7 +158,7 @@ function App() {
           <motion.div className="section-heading" variants={reveal} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.4 }}>
             <div>
               <span className="eyebrow">Selected experiences</span>
-              <h2>One studio. Multiple industries.</h2>
+              <h2>One studio. Twelve industries.</h2>
             </div>
             <p>Open any demo to change its visual style, inspect live simulated data and interact with the 3D scene.</p>
           </motion.div>

@@ -288,6 +288,232 @@ function BrandModel({ color, intensity }) {
   )
 }
 
+function EducationModel({ color, intensity }) {
+  const group = useRef()
+  useFrame((state) => {
+    if (!group.current) return
+    group.current.rotation.y = -0.28 + Math.sin(state.clock.elapsedTime * 0.32) * 0.12
+    group.current.position.y = Math.sin(state.clock.elapsedTime * 0.7) * 0.04 - 0.28
+  })
+
+  return (
+    <group ref={group} position={[0, -0.28, 0]}>
+      <RoundedBox args={[2.7, 0.15, 1.65]} radius={0.08} smoothness={4} position={[-0.08, -0.12, 0]} rotation={[0, 0.12, -0.06]}>
+        <meshPhysicalMaterial color="#f5f0df" roughness={0.48} clearcoat={0.25} />
+      </RoundedBox>
+      <RoundedBox args={[2.7, 0.15, 1.65]} radius={0.08} smoothness={4} position={[0.08, 0.08, 0]} rotation={[0, -0.12, 0.06]}>
+        <meshStandardMaterial color={color} roughness={0.38} metalness={0.12} />
+      </RoundedBox>
+      <mesh position={[0, 0.48, 0]}>
+        <sphereGeometry args={[0.32, 32, 32]} />
+        <meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.5 + intensity * 0.008} roughness={0.22} />
+      </mesh>
+      {[0, 1, 2].map((item) => (
+        <Float key={item} speed={1.1 + item * 0.18} floatIntensity={0.38}>
+          <RoundedBox
+            args={[0.42, 0.58 + item * 0.18, 0.18]}
+            radius={0.05}
+            smoothness={3}
+            position={[-1.05 + item * 1.05, 0.48 + item * 0.08, -0.44]}
+          >
+            <meshStandardMaterial color={item === 1 ? '#4f7cff' : color} emissive={color} emissiveIntensity={0.16} roughness={0.3} />
+          </RoundedBox>
+        </Float>
+      ))}
+      <mesh position={[0, 0.44, 0]} rotation={[Math.PI / 2, 0, 0]}>
+        <torusGeometry args={[0.78, 0.02, 12, 100]} />
+        <meshBasicMaterial color="#ffffff" transparent opacity={0.34} />
+      </mesh>
+    </group>
+  )
+}
+
+function FitnessModel({ color, intensity }) {
+  const group = useRef()
+  useFrame((state, delta) => {
+    if (!group.current) return
+    group.current.rotation.y += delta * 0.11
+    group.current.position.y = Math.sin(state.clock.elapsedTime * 0.9) * 0.055 - 0.15
+  })
+
+  return (
+    <group ref={group} position={[0, -0.15, 0]} rotation={[0.05, -0.35, -0.08]}>
+      <mesh rotation={[0, 0, Math.PI / 2]}>
+        <cylinderGeometry args={[0.09, 0.09, 3.4, 32]} />
+        <meshStandardMaterial color="#dce3eb" metalness={0.92} roughness={0.18} />
+      </mesh>
+      {[-1.28, -1.02, 1.02, 1.28].map((x, index) => (
+        <mesh key={x} position={[x, 0, 0]} rotation={[0, 0, Math.PI / 2]}>
+          <cylinderGeometry args={[index % 3 === 0 ? 0.64 : 0.52, index % 3 === 0 ? 0.64 : 0.52, 0.22, 48]} />
+          <meshPhysicalMaterial color={index % 2 ? '#20242d' : color} roughness={0.3} metalness={0.52} clearcoat={0.7} emissive={color} emissiveIntensity={intensity * 0.003} />
+        </mesh>
+      ))}
+      <mesh position={[0, -0.72, 0]} rotation={[Math.PI / 2, 0, 0]}>
+        <torusGeometry args={[1.42, 0.045, 16, 120]} />
+        <meshBasicMaterial color={color} transparent opacity={0.46} />
+      </mesh>
+      <mesh position={[0, -0.76, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <circleGeometry args={[1.38, 64]} />
+        <meshBasicMaterial color="#101218" transparent opacity={0.5} />
+      </mesh>
+    </group>
+  )
+}
+
+function HealthcareModel({ color, intensity }) {
+  const group = useRef()
+  const pulse = useRef()
+  useFrame((state, delta) => {
+    if (group.current) group.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.42) * 0.2
+    if (pulse.current) {
+      pulse.current.rotation.z += delta * 0.18
+      const scale = 1 + Math.sin(state.clock.elapsedTime * 1.4) * 0.06
+      pulse.current.scale.setScalar(scale)
+    }
+  })
+
+  return (
+    <group ref={group}>
+      <Float speed={1.2} floatIntensity={0.38}>
+        <group rotation={[0.05, -0.18, 0.08]}>
+          <RoundedBox args={[0.62, 2.45, 0.5]} radius={0.14} smoothness={5}>
+            <meshPhysicalMaterial color={color} roughness={0.2} metalness={0.2} clearcoat={1} emissive={color} emissiveIntensity={intensity * 0.005} />
+          </RoundedBox>
+          <RoundedBox args={[2.45, 0.62, 0.5]} radius={0.14} smoothness={5}>
+            <meshPhysicalMaterial color={color} roughness={0.2} metalness={0.2} clearcoat={1} emissive={color} emissiveIntensity={intensity * 0.005} />
+          </RoundedBox>
+        </group>
+      </Float>
+      <mesh ref={pulse} rotation={[1.05, 0.2, 0.1]}>
+        <torusGeometry args={[1.68, 0.025, 14, 150]} />
+        <meshBasicMaterial color="#4e8cff" transparent opacity={0.72} />
+      </mesh>
+      {[0, 1, 2].map((item) => (
+        <mesh key={item} position={[-1.72 + item * 1.72, item === 1 ? 1.55 : -1.18, -0.35]} scale={0.11 + item * 0.025}>
+          <sphereGeometry args={[1, 24, 24]} />
+          <meshStandardMaterial color={item === 1 ? '#ffffff' : color} emissive={color} emissiveIntensity={0.7} />
+        </mesh>
+      ))}
+    </group>
+  )
+}
+
+function TravelModel({ color, intensity }) {
+  const globe = useRef()
+  const orbit = useRef()
+  useFrame((_, delta) => {
+    if (globe.current) globe.current.rotation.y += delta * 0.13
+    if (orbit.current) orbit.current.rotation.z -= delta * 0.24
+  })
+
+  return (
+    <group>
+      <Float speed={1.15} floatIntensity={0.34}>
+        <mesh ref={globe}>
+          <sphereGeometry args={[1.25, 48, 32]} />
+          <meshPhysicalMaterial color="#163f66" roughness={0.3} metalness={0.2} clearcoat={0.65} transparent opacity={0.82} />
+        </mesh>
+        <mesh scale={1.01}>
+          <sphereGeometry args={[1.25, 24, 16]} />
+          <meshBasicMaterial color={color} wireframe transparent opacity={0.33 + intensity * 0.002} />
+        </mesh>
+      </Float>
+      <group ref={orbit} rotation={[0.72, 0.18, 0.16]}>
+        <mesh>
+          <torusGeometry args={[1.76, 0.025, 14, 160]} />
+          <meshBasicMaterial color={color} transparent opacity={0.7} />
+        </mesh>
+        <mesh position={[1.76, 0, 0]} rotation={[0, 0, -Math.PI / 2]} scale={[0.24, 0.5, 0.24]}>
+          <coneGeometry args={[0.3, 0.8, 4]} />
+          <meshStandardMaterial color="#ffffff" emissive={color} emissiveIntensity={0.35} />
+        </mesh>
+      </group>
+      <mesh rotation={[Math.PI / 2, 0.35, 0]}>
+        <torusGeometry args={[1.52, 0.012, 12, 150]} />
+        <meshBasicMaterial color="#8b6dff" transparent opacity={0.5} />
+      </mesh>
+    </group>
+  )
+}
+
+function JewelleryModel({ color, intensity }) {
+  const jewel = useRef()
+  const rings = useRef()
+  useFrame((state, delta) => {
+    if (jewel.current) {
+      jewel.current.rotation.y += delta * 0.2
+      jewel.current.rotation.x = 0.18 + Math.sin(state.clock.elapsedTime * 0.5) * 0.1
+    }
+    if (rings.current) rings.current.rotation.y -= delta * 0.11
+  })
+
+  return (
+    <group>
+      <Float speed={1.25} floatIntensity={0.48}>
+        <mesh ref={jewel} scale={[1.1, 1.42, 1.1]}>
+          <octahedronGeometry args={[1, 2]} />
+          <meshPhysicalMaterial color={color} roughness={0.08} metalness={0.35} transmission={0.28} thickness={1.5} clearcoat={1} emissive={color} emissiveIntensity={intensity * 0.004} />
+        </mesh>
+      </Float>
+      <group ref={rings} rotation={[1.12, 0.1, 0.15]}>
+        <mesh>
+          <torusGeometry args={[1.72, 0.07, 18, 180]} />
+          <meshPhysicalMaterial color="#f2d487" metalness={0.9} roughness={0.16} clearcoat={1} />
+        </mesh>
+        {[0, 1, 2].map((item) => {
+          const angle = (item / 3) * Math.PI * 2
+          return (
+            <mesh key={item} position={[Math.cos(angle) * 1.72, Math.sin(angle) * 1.72, 0]} scale={0.12}>
+              <octahedronGeometry args={[1, 0]} />
+              <meshStandardMaterial color={item === 1 ? '#c58cff' : color} emissive={color} emissiveIntensity={0.6} />
+            </mesh>
+          )
+        })}
+      </group>
+    </group>
+  )
+}
+
+function SportsModel({ color, intensity }) {
+  const group = useRef()
+  const ball = useRef()
+  useFrame((state, delta) => {
+    if (group.current) group.current.rotation.y = -0.3 + Math.sin(state.clock.elapsedTime * 0.3) * 0.12
+    if (ball.current) {
+      ball.current.rotation.x += delta * 0.6
+      ball.current.rotation.y += delta * 0.8
+      ball.current.position.y = 0.48 + Math.abs(Math.sin(state.clock.elapsedTime * 1.1)) * 0.38
+    }
+  })
+
+  return (
+    <group ref={group} position={[0, -0.56, 0]}>
+      <mesh rotation={[Math.PI / 2, 0, 0]} scale={[1.25, 0.82, 1]}>
+        <torusGeometry args={[1.36, 0.16, 20, 120]} />
+        <meshStandardMaterial color="#dce5eb" roughness={0.46} metalness={0.15} />
+      </mesh>
+      <mesh position={[0, 0.03, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={[1.48, 0.92, 1]}>
+        <circleGeometry args={[1, 64]} />
+        <meshStandardMaterial color="#1f7548" roughness={0.88} />
+      </mesh>
+      {[0.42, 0.78].map((radius) => (
+        <mesh key={radius} position={[0, 0.045, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={[1.48, 0.92, 1]}>
+          <ringGeometry args={[radius - 0.012, radius, 64]} />
+          <meshBasicMaterial color="#d7f7df" transparent opacity={0.48} />
+        </mesh>
+      ))}
+      <mesh ref={ball} position={[0, 0.48, 0]} scale={0.4}>
+        <icosahedronGeometry args={[1, 2]} />
+        <meshStandardMaterial color="#f8fbff" roughness={0.42} metalness={0.12} emissive={color} emissiveIntensity={intensity * 0.0025} />
+      </mesh>
+      <mesh position={[0, 1.42, -0.62]}>
+        <torusGeometry args={[0.66, 0.02, 12, 100]} />
+        <meshBasicMaterial color={color} transparent opacity={0.64} />
+      </mesh>
+    </group>
+  )
+}
+
 function DemoModel({ type, color, intensity, mode }) {
   const props = { color, intensity, mode }
   if (type === 'commerce') return <CommerceModel {...props} />
@@ -295,6 +521,12 @@ function DemoModel({ type, color, intensity, mode }) {
   if (type === 'hospitality') return <HospitalityModel {...props} />
   if (type === 'saas') return <SaasModel {...props} />
   if (type === 'events') return <EventModel {...props} />
+  if (type === 'education') return <EducationModel {...props} />
+  if (type === 'fitness') return <FitnessModel {...props} />
+  if (type === 'healthcare') return <HealthcareModel {...props} />
+  if (type === 'travel') return <TravelModel {...props} />
+  if (type === 'jewellery') return <JewelleryModel {...props} />
+  if (type === 'sports') return <SportsModel {...props} />
   return <BrandModel {...props} />
 }
 
