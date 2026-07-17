@@ -1,0 +1,8 @@
+# Default owner for all company showcase changes
+* @satitech-admin
+
+# Workflow and governance changes
+/.github/ @satitech-admin
+/SECURITY.md @satitech-admin
+/CONTRIBUTING.md @satitech-admin
+/PROJECTS.md @satitech-admin
