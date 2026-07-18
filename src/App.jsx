@@ -143,7 +143,7 @@ function App() {
           </motion.div>
 
           <div className="hero-stats">
-            <div><strong>08</strong><span>Full real-world sites</span></div>
+            <div><strong>09</strong><span>Full real-world sites</span></div>
             <div><strong>3D</strong><span>Browser-native visuals</span></div>
             <div><strong>100%</strong><span>Responsive experience</span></div>
             <div><strong>24/7</strong><span>Digital sales presence</span></div>
@@ -157,6 +157,49 @@ function App() {
         </div>
 
         <RealWorldShowcase />
+
+        <section className="work section-shell" id="verified-projects">
+          <motion.div className="section-heading" variants={reveal} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.4 }}>
+            <div>
+              <span className="eyebrow">Verified repository and live demo</span>
+              <h2>Official Sati Technologies website.</h2>
+            </div>
+            <p>A sanitized, production-build verified company website published through a feature branch and pull request.</p>
+          </motion.div>
+
+          <div className="demo-grid">
+            <motion.article
+              className="demo-card"
+              variants={reveal}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+              style={{ '--accent': '#77f7d2', '--secondary': '#4f7cff' }}
+            >
+              <div className="card-art card-art-brands" style={{ '--accent': '#77f7d2', '--secondary': '#4f7cff' }}>
+                <span className="card-grid" />
+                <span className="art-orbit art-orbit-one" />
+                <span className="art-orbit art-orbit-two" />
+                <span className="art-core"><Globe2 size={34} /></span>
+                <span className="art-chip art-chip-one">Live</span>
+                <span className="art-chip art-chip-two">GitHub</span>
+                <span className="art-glow" />
+              </div>
+              <div className="card-content">
+                <div className="card-meta"><span>Official Corporate Website</span><span>Verified</span></div>
+                <h3>Sati Technologies Website</h3>
+                <p>Services, portfolio concepts, pricing and conversion-focused contact journeys for the Sati Technologies brand.</p>
+                <div className="tag-row"><span>React</span><span>Vite</span><span>GitHub Pages</span></div>
+                <a className="card-link" href="https://satitech-official.github.io/sati-technologies-website/" target="_blank" rel="noreferrer">
+                  View live website <span><ArrowUpRight size={17} /></span>
+                </a>
+                <a className="card-link" href="https://github.com/satitech-official/sati-technologies-website" target="_blank" rel="noreferrer">
+                  View repository <span><Code2 size={17} /></span>
+                </a>
+              </div>
+            </motion.article>
+          </div>
+        </section>
 
         <section className="work section-shell" id="work">
           <motion.div className="section-heading" variants={reveal} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.4 }}>
