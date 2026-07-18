@@ -8,8 +8,9 @@ This registry tracks projects that are published, under development or waiting f
 | --- | --- | --- | --- | --- |
 | SatiTech Interactive Showcase | `satitech-showcase` | Internal Product | Live | Maintain demos and deployment checks |
 | [Sati Technologies Official Website](https://satitech-official.github.io/sati-technologies-website/) | [`sati-technologies-website`](https://github.com/satitech-official/sati-technologies-website) | Official Corporate Website | Published and live | Maintain CI, Pages deployment, and screenshots |
+| [Drishti Verma Developer Portfolio](https://satitech-official.github.io/satitech-showcase/demos/drishti-verma-portfolio/) | Hosted in `satitech-showcase` | Sanitized Portfolio Demo | Ready for publication | Verify Pages deployment after merge |
 | Chaat Adda Café Experience | `chaat-adda-cafe-site` | Portfolio Demo | Connected | Add approved live URL and screenshots |
-| India’s Got Latent Fan Experience | `indias-got-latent-site` | Unofficial Fan Experience | Private shell | Upload reviewed source and approved media |
+| India’s Got Latent Fan Experience | `indias-got-latent-site` | Unofficial Fan Experience | Private repository; Pages blocked | Publish only after visibility and media review |
 
 ## Local Codex projects awaiting GitHub intake
 
@@ -23,7 +24,6 @@ The following known projects require their actual local source folders to be pus
 - YSDA football platform
 - Room rental platform
 - Sai Mart e-commerce platform
-- Drishti Verma portfolio
 - Restaurant, gym, jewellery, school, tourism and healthcare demo sites
 
 ## Intake checklist
