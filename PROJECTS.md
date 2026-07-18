@@ -7,7 +7,7 @@ This registry tracks projects that are published, under development or waiting f
 | Project | Repository | Classification | Status | Next requirement |
 | --- | --- | --- | --- | --- |
 | SatiTech Interactive Showcase | `satitech-showcase` | Internal Product | Live | Maintain demos and deployment checks |
-| [Sati Technologies Official Website](https://satitech-official.github.io/sati-technologies-website/) | [`sati-technologies-website`](https://github.com/satitech-official/sati-technologies-website) | Official Corporate Website | Live demo verified; PR open | Review and merge [PR #1](https://github.com/satitech-official/sati-technologies-website/pull/1) |
+| [Sati Technologies Official Website](https://satitech-official.github.io/sati-technologies-website/) | [`sati-technologies-website`](https://github.com/satitech-official/sati-technologies-website) | Official Corporate Website | Published and live | Maintain CI, Pages deployment, and screenshots |
 | Chaat Adda Café Experience | `chaat-adda-cafe-site` | Portfolio Demo | Connected | Add approved live URL and screenshots |
 | India’s Got Latent Fan Experience | `indias-got-latent-site` | Unofficial Fan Experience | Private shell | Upload reviewed source and approved media |
 
