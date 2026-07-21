@@ -161,10 +161,10 @@ function App() {
         <section className="work section-shell" id="verified-projects">
           <motion.div className="section-heading" variants={reveal} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.4 }}>
             <div>
-              <span className="eyebrow">Verified repository and live demo</span>
-              <h2>Official Sati Technologies website.</h2>
+              <span className="eyebrow">Verified repositories and live demos</span>
+              <h2>Published SatiTech projects.</h2>
             </div>
-            <p>A sanitized, production-build verified company website published through a feature branch and pull request.</p>
+            <p>Production-build verified projects with public source repositories and working GitHub Pages deployments.</p>
           </motion.div>
 
           <div className="demo-grid">
@@ -194,6 +194,37 @@ function App() {
                   View live website <span><ArrowUpRight size={17} /></span>
                 </a>
                 <a className="card-link" href="https://github.com/satitech-official/sati-technologies-website" target="_blank" rel="noreferrer">
+                  View repository <span><Code2 size={17} /></span>
+                </a>
+              </div>
+            </motion.article>
+
+            <motion.article
+              className="demo-card"
+              variants={reveal}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+              style={{ '--accent': '#ff4d8d', '--secondary': '#8a5cff' }}
+            >
+              <div className="card-art card-art-events" style={{ '--accent': '#ff4d8d', '--secondary': '#8a5cff' }}>
+                <span className="card-grid" />
+                <span className="art-orbit art-orbit-one" />
+                <span className="art-orbit art-orbit-two" />
+                <span className="art-core"><Sparkles size={34} /></span>
+                <span className="art-chip art-chip-one">Live</span>
+                <span className="art-chip art-chip-two">Fan concept</span>
+                <span className="art-glow" />
+              </div>
+              <div className="card-content">
+                <div className="card-meta"><span>Unofficial Fan-Made Experience</span><span>Published</span></div>
+                <h3>India&apos;s Got Latent Fan Experience</h3>
+                <p>An independent entertainment website concept with a cinematic 3D experience, show discovery and participant journey. Not affiliated with or endorsed by the official show or its creators.</p>
+                <div className="tag-row"><span>Next.js</span><span>Three.js</span><span>GitHub Pages</span></div>
+                <a className="card-link" href="https://satitech-official.github.io/indias-got-latent-site/" target="_blank" rel="noreferrer">
+                  View live demo <span><ArrowUpRight size={17} /></span>
+                </a>
+                <a className="card-link" href="https://github.com/satitech-official/indias-got-latent-site" target="_blank" rel="noreferrer">
                   View repository <span><Code2 size={17} /></span>
                 </a>
               </div>

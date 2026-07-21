@@ -10,7 +10,7 @@ This registry tracks projects that are published, under development or waiting f
 | [Sati Technologies Official Website](https://satitech-official.github.io/sati-technologies-website/) | [`sati-technologies-website`](https://github.com/satitech-official/sati-technologies-website) | Official Corporate Website | Published and live | Maintain CI, Pages deployment, and screenshots |
 | [Drishti Verma Developer Portfolio](https://satitech-official.github.io/satitech-showcase/demos/drishti-verma-portfolio/) | Hosted in `satitech-showcase` | Sanitized Portfolio Demo | Ready for publication | Verify Pages deployment after merge |
 | Chaat Adda Café Experience | `chaat-adda-cafe-site` | Portfolio Demo | Connected | Add approved live URL and screenshots |
-| India’s Got Latent Fan Experience | `indias-got-latent-site` | Unofficial Fan Experience | Private repository; Pages blocked | Publish only after visibility and media review |
+| [India’s Got Latent Fan Experience](https://satitech-official.github.io/indias-got-latent-site/) | [`indias-got-latent-site`](https://github.com/satitech-official/indias-got-latent-site) | Unofficial Fan Experience | Published and live | Maintain the disclaimer, Pages deployment, and media review |
 
 ## Local Codex projects awaiting GitHub intake
 

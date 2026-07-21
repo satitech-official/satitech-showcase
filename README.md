@@ -39,7 +39,7 @@ Our work combines strategy, responsive design, animation, reliable engineering a
 | [SatiTech Interactive Showcase](https://github.com/satitech-official/satitech-showcase) | Internal Product | Multi-industry | Live |
 | [Sati Technologies Website](https://satitech-official.github.io/sati-technologies-website/) ([repository](https://github.com/satitech-official/sati-technologies-website)) | Official Corporate Website | Technology services | Published and live |
 | [Chaat Adda Café Experience](https://github.com/satitech-official/chaat-adda-cafe-site) | Portfolio Demo | Restaurant / Café | Repository ready |
-| [India’s Got Latent Fan Experience](https://github.com/satitech-official/indias-got-latent-site) | Unofficial Fan Experience | Entertainment | Private development |
+| [India’s Got Latent Fan Experience](https://satitech-official.github.io/indias-got-latent-site/) ([repository](https://github.com/satitech-official/indias-got-latent-site)) | Unofficial Fan Experience | Entertainment | Published and live |
 
 The complete project intake and publishing status is maintained in [`PROJECTS.md`](PROJECTS.md).
 
