@@ -1,0 +1,49 @@
+import { siteConfig } from "@/config/site";
+import { getProjectAsset } from "@/config/project-assets";
+import { unique } from "@/lib/utils";
+
+function isSafeImageSource(source) {
+  if (!source || typeof source !== "string") return false;
+  if (source.startsWith("/") && !source.startsWith("//")) return true;
+
+  try {
+    const url = new URL(source);
+    return url.protocol === "https:";
+  } catch {
+    return false;
+  }
+}
+
+export function githubSocialPreview(repo) {
+  const fullName = repo.full_name || `${siteConfig.githubOrg}/${repo.name}`;
+  return `https://opengraph.githubassets.com/sati-tech-${encodeURIComponent(repo.name)}/${fullName}`;
+}
+
+export function resolveProjectImages(repo, metadata = {}) {
+  const asset = getProjectAsset(repo.name);
+  const socialPreview = githubSocialPreview(repo);
+  const candidates = [
+    asset?.cover,
+    metadata.coverImage,
+    metadata.cover,
+    metadata.liveScreenshot,
+    metadata.repositoryImage,
+    metadata.readmeImage,
+    socialPreview,
+  ].filter(isSafeImageSource);
+
+  const cover = candidates[0] || "";
+  const mobile = [metadata.mobileImage, metadata.mobile].find(isSafeImageSource) || "";
+  const gallery = unique([
+    ...(Array.isArray(metadata.gallery) ? metadata.gallery : []),
+    cover,
+  ].filter(isSafeImageSource));
+
+  return {
+    cover,
+    mobile,
+    gallery,
+    source: cover === asset?.cover ? asset.imageSource : metadata.coverImage || metadata.cover ? "curated" : cover === socialPreview ? "github-social-preview" : "repository",
+    hasCustomCover: cover === asset?.cover || Boolean(metadata.coverImage || metadata.cover),
+  };
+}

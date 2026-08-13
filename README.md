@@ -1,118 +1,88 @@
-<div align="center">
+# Sati Tech — Digital Experiences That Move Businesses Forward
 
-# Sati Technologies
+Production-ready portfolio for **Sati Tech Pvt. Ltd.** built by merging the strongest architecture, interaction and content systems from the two supplied projects.
 
-### Code. Create. Elevate.
+## Highlights
 
-**Business websites · E-commerce · Custom web applications · Interactive 3D experiences**
+- Next.js App Router with JavaScript / JSX application code
+- **SATI ORBIT** interactive Three.js / React Three Fiber hero
+- Reduced-motion, touch-device and WebGL fallbacks
+- Real Sati Tech logo sourced from the company website
+- Live public repositories from `satitech-official`
+- Stable curated GitHub fallback data when the API is unavailable
+- Centralized live URL verification and project media resolution
+- Unique GitHub social previews with designed CSS fallbacks
+- Editorial selected-work layouts and full project explorer
+- Industry, technology, search and sort filters
+- Dynamic case studies with qualitative, metadata-backed narratives
+- Nine expandable services and an interactive service matcher
+- Lenis, Framer Motion and GSAP ScrollTrigger with cleanup
+- Session-aware opening loader and route transitions
+- Keyboard command palette with focus containment and arrow navigation
+- Desktop-only contextual cursor
+- Optional PostgreSQL enquiry storage through Drizzle
+- Safe contact and health APIs when `DATABASE_URL` is absent
+- Metadata, Open Graph image, JSON-LD, sitemap and robots
 
-[![Quality checks](https://github.com/satitech-official/satitech-showcase/actions/workflows/ci.yml/badge.svg)](https://github.com/satitech-official/satitech-showcase/actions/workflows/ci.yml)
-[![Deploy to GitHub Pages](https://github.com/satitech-official/satitech-showcase/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/satitech-official/satitech-showcase/actions/workflows/deploy-pages.yml)
-
-**[Explore the live showcase →](https://satitech-official.github.io/satitech-showcase/)**
-
-</div>
-
-## About Sati Technologies
-
-Sati Technologies is an Indore-based digital solutions company that designs and develops modern websites, e-commerce experiences, custom web applications, dashboards and immersive 3D interfaces for businesses, institutions and growing brands.
-
-Our work combines strategy, responsive design, animation, reliable engineering and conversion-focused customer journeys.
-
-## What we build
-
-- Business and corporate websites
-- E-commerce stores and product experiences
-- Custom web applications and dashboards
-- Restaurant, café, hotel and tourism platforms
-- School, education and admission systems
-- Gym, fitness and sports platforms
-- Jewellery, fashion and luxury showcases
-- Healthcare and appointment experiences
-- Real-estate and property journeys
-- Interactive 3D brand and product experiences
-
-## Featured portfolio
-
-| Project | Classification | Industry | Status |
-| --- | --- | --- | --- |
-| [SatiTech Interactive Showcase](https://github.com/satitech-official/satitech-showcase) | Internal Product | Multi-industry | Live |
-| [Sati Technologies Website](https://satitech-official.github.io/sati-technologies-website/) ([repository](https://github.com/satitech-official/sati-technologies-website)) | Official Corporate Website | Technology services | Published and live |
-| [Chaat Adda Café Experience](https://github.com/satitech-official/chaat-adda-cafe-site) | Portfolio Demo | Restaurant / Café | Repository ready |
-| [India’s Got Latent Fan Experience](https://satitech-official.github.io/indias-got-latent-site/) ([repository](https://github.com/satitech-official/indias-got-latent-site)) | Unofficial Fan Experience | Entertainment | Published and live |
-
-The complete project intake and publishing status is maintained in [`PROJECTS.md`](PROJECTS.md).
-
-## Showcase capabilities
-
-The live showcase includes responsive real-world website concepts and interactive 3D experiences for restaurants, gyms, education, travel, real estate, jewellery, healthcare, sports, SaaS and events.
-
-Visitors can explore working navigation, filters, galleries, enquiry journeys, media controls, simulated dashboards and configurable 3D scenes.
-
-## Technology
-
-- React and Next.js
-- Vite
-- Three.js, React Three Fiber and Drei
-- Framer Motion and GSAP
-- Tailwind CSS and responsive CSS systems
-- Node.js APIs and database-ready architecture
-- GitHub Actions and automated deployments
-
-## Professional delivery workflow
-
-1. Discover the business goals, audience and required customer journey.
-2. Confirm scope, content, integrations and approved assets.
-3. Design responsive UI and reusable components.
-4. Develop features through focused branches and pull requests.
-5. Run lint, build, responsive, accessibility and interaction checks.
-6. Deploy to an approved hosting account.
-7. Complete client handover, documentation and support setup.
-
-## Repository standards
-
-Every published Sati Technologies project should include:
-
-- Accurate project classification
-- Professional README and approved live-demo link
-- Desktop and mobile screenshots
-- Installation and environment instructions
-- `.gitignore` and `.env.example` where required
-- Pull-request template and CODEOWNERS
-- Security and contribution guidance
-- Automated lint and production-build checks
-- No secrets, private customer data or unlicensed assets
-
-## Project classifications
-
-- **Official Client Project** — published only with written client permission
-- **Portfolio Demo** — original demonstration created to show capability
-- **Internal Product** — product or platform owned by Sati Technologies
-- **Unofficial Fan Experience** — clearly disclosed concept with no false affiliation
-- **Private Client Work** — confidential project that is not publicly published
-
-## Local development
+## Setup
 
 ```bash
 npm install
 npm run dev
 ```
 
-Quality checks:
+Open `http://localhost:3000`.
+
+## Validation
 
 ```bash
 npm run lint
+npm run typecheck
 npm run build
 ```
 
-## Work with Sati Technologies
+## Environment
 
-- Website: https://www.satitechnologies.com/
-- Email: satitechinfo@gmail.com
-- WhatsApp: https://wa.me/919131043573
-- Instagram: https://www.instagram.com/satitech.official
-- GitHub: https://github.com/satitech-official
+Copy `.env.example` to `.env.local` and configure only the values you need.
 
----
+```env
+DATABASE_URL=
+GITHUB_TOKEN=
+NEXT_PUBLIC_SITE_URL=https://www.satitechnologies.com
+NEXT_PUBLIC_WHATSAPP_NUMBER=919131043573
+NEXT_PUBLIC_CONTACT_EMAIL=www.satitechinfo@gmail.com
+NEXT_PUBLIC_INSTAGRAM_URL=
+NEXT_PUBLIC_FACEBOOK_URL=
+```
 
-Built by **Sati Technologies**, Indore, India — *Code. Create. Elevate.*
+- `GITHUB_TOKEN` is optional and server-only. It increases the GitHub REST API rate limit.
+- `DATABASE_URL` is optional. Without it, the portfolio and API health route remain available, while the validated contact response directs delivery to WhatsApp/email.
+- Official profiles are configured for Instagram and Facebook, with `https://www.satitechnologies.com` as the production website URL.
+
+## GitHub project pipeline
+
+`src/lib/github.js` fetches public, non-forked, non-archived repositories from:
+
+```text
+https://api.github.com/orgs/satitech-official/repos
+```
+
+Repository data is merged with `src/config/project-metadata.js`. Live URLs are resolved in this order:
+
+1. Repository homepage
+2. Curated verified metadata
+3. GitHub Pages candidate when Pages is enabled
+
+Every live candidate is checked before a Live action is shown. If none passes, the GitHub action remains available and the Live action is omitted.
+
+## Project media
+
+Owned images can be configured in `src/config/project-metadata.js`. When a curated file is not supplied, the portfolio uses the repository-specific GitHub Open Graph preview. The UI also includes a designed fallback if a remote image fails.
+
+## Contact API
+
+`POST /api/contact` validates name, service, email/phone and project details. With PostgreSQL configured it stores the enquiry; without PostgreSQL it returns a safe `202` response with `stored: false` instead of crashing the site.
+
+## Deployment
+
+The project is ready for Vercel. Configure `NEXT_PUBLIC_SITE_URL`, and optionally `GITHUB_TOKEN` and `DATABASE_URL`, then deploy with the standard Next.js build command.
