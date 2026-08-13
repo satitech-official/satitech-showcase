@@ -33,7 +33,7 @@ jobs:
         uses: actions/configure-pages@v5
 
       - name: Install dependencies
-        run: npm install --no-audit --no-fund
+        run: npm install --no-audit --no-fund --no-package-lock
 
       - name: Build static portfolio
         run: npm run build

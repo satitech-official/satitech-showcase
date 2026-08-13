@@ -79,10 +79,14 @@ Every live candidate is checked before a Live action is shown. If none passes, t
 
 Owned images can be configured in `src/config/project-metadata.js`. When a curated file is not supplied, the portfolio uses the repository-specific GitHub Open Graph preview. The UI also includes a designed fallback if a remote image fails.
 
-## Contact API
+## Contact delivery
 
-`POST /api/contact` validates name, service, email/phone and project details. With PostgreSQL configured it stores the enquiry; without PostgreSQL it returns a safe `202` response with `stored: false` instead of crashing the site.
+The static contact form validates the enquiry in the browser and opens a prepared WhatsApp conversation, so it works reliably on GitHub Pages without a server.
 
 ## Deployment
 
-The project is ready for Vercel. Configure `NEXT_PUBLIC_SITE_URL`, and optionally `GITHUB_TOKEN` and `DATABASE_URL`, then deploy with the standard Next.js build command.
+The portfolio is deployed through GitHub Actions and GitHub Pages—no Vercel deployment is used.
+
+- Live site: `https://satitech-official.github.io/satitech-showcase/`
+- Repository: `https://github.com/satitech-official/satitech-showcase`
+- Every push to `main` runs lint, type-check, production build and the static Pages deployment workflow.
