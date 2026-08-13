@@ -119,7 +119,7 @@ export const siteConfig = {
   facebookUrl,
   location: "India",
   logo: `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/brand/sati-tech-logo.jpeg`,
-  ogImage: "/og.png",
+  ogImage: "/og.webp",
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "919131043573",
   whatsappDisplay: "+91 91310 43573",
   contactNumbers: [
