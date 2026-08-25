@@ -2,6 +2,13 @@ import { siteConfig } from "@/config/site";
 import { getProjectAsset } from "@/config/project-assets";
 import { unique } from "@/lib/utils";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
+function withBasePath(source) {
+  if (!source || !basePath || !source.startsWith("/") || source.startsWith("//")) return source;
+  return source === basePath || source.startsWith(`${basePath}/`) ? source : `${basePath}${source}`;
+}
+
 function isSafeImageSource(source) {
   if (!source || typeof source !== "string") return false;
   if (source.startsWith("/") && !source.startsWith("//")) return true;
@@ -30,12 +37,12 @@ export function resolveProjectImages(repo, metadata = {}) {
     metadata.readmeImage,
     asset?.cover,
     socialPreview,
-  ].filter(isSafeImageSource);
+  ].map(withBasePath).filter(isSafeImageSource);
 
   const cover = candidates[0] || "";
-  const mobile = [metadata.mobileImage, metadata.mobile].find(isSafeImageSource) || "";
+  const mobile = [metadata.mobileImage, metadata.mobile].map(withBasePath).find(isSafeImageSource) || "";
   const gallery = unique([
-    ...(Array.isArray(metadata.gallery) ? metadata.gallery : []),
+    ...(Array.isArray(metadata.gallery) ? metadata.gallery.map(withBasePath) : []),
     cover,
   ].filter(isSafeImageSource));
 
