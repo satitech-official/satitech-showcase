@@ -1,8 +1,10 @@
 # Sati Tech — Digital Experiences That Move Businesses Forward
 
+## Portfolio Preview
+
 <p align="center">
   <a href="https://satitech-official.github.io/satitech-showcase/">
-    <img src="./public/og.webp" alt="Sati Tech portfolio preview" width="960" />
+    <img src="https://raw.githubusercontent.com/satitech-official/satitech-showcase/main/public/og.webp" alt="Sati Tech portfolio preview" width="960" />
   </a>
 </p>
 
