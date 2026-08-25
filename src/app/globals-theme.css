@@ -1,0 +1,117 @@
+/* Shared page system: warm paper, deep ink and a single cobalt accent. */
+:root {
+  --page-paper: #f7f4ed;
+  --page-surface: #fffdf8;
+  --page-ink: #172033;
+  --page-muted: #657080;
+  --page-line: #d8d3c8;
+  --page-blue: #3152ef;
+  --page-blue-deep: #203ac7;
+  --page-sand: #ece7dc;
+}
+
+body:has(.site-content--editorial) {
+  background: var(--page-paper);
+  color: var(--page-ink);
+}
+
+body:has(.site-content--editorial) .tech-backdrop { display: none; }
+body:has(.site-content--editorial)::before { opacity: .014; }
+body:has(.site-content--editorial) .social-float { display: none !important; }
+
+/* One calm header across the studio, work and service pages. */
+body:has(.site-content--editorial) header > div,
+body:has(.studio-home) header > div {
+  border-color: rgba(23,32,51,.12) !important;
+  background: rgba(255,253,248,.92) !important;
+  box-shadow: 0 1rem 2.7rem rgba(23,32,51,.12) !important;
+}
+
+body:has(.site-content--editorial) header nav,
+body:has(.studio-home) header nav {
+  border-color: rgba(23,32,51,.12) !important;
+  background: #eeeae1 !important;
+}
+
+body:has(.site-content--editorial) header nav a,
+body:has(.studio-home) header nav a { color: #616876 !important; }
+body:has(.site-content--editorial) header a,
+body:has(.studio-home) header a { color: var(--page-ink) !important; }
+body:has(.site-content--editorial) header nav a:hover,
+body:has(.studio-home) header nav a:hover { background: #e2ddd3 !important; color: var(--page-ink) !important; }
+body:has(.site-content--editorial) header nav a.bg-\[\#151515\],
+body:has(.studio-home) header nav a.bg-\[\#151515\] { background: var(--page-ink) !important; color: white !important; }
+body:has(.site-content--editorial) header button,
+body:has(.site-content--editorial) header a.grid,
+body:has(.studio-home) header button,
+body:has(.studio-home) header a.grid {
+  border-color: rgba(23,32,51,.12) !important;
+  background: var(--page-surface) !important;
+  color: var(--page-ink) !important;
+}
+body:has(.site-content--editorial) header .action-primary,
+body:has(.studio-home) header .action-primary { background: var(--page-blue) !important; color: white !important; }
+body:has(.site-content--editorial) header a[aria-label="Sati Tech home"] .text-white,
+body:has(.studio-home) header a[aria-label="Sati Tech home"] .text-white { color: var(--page-ink) !important; }
+
+.site-content--editorial { min-height: 74vh; background: radial-gradient(circle at 92% 10%,rgba(49,82,239,.10),transparent 24rem),linear-gradient(180deg,#f7f4ed 0%,#f1eee7 100%); }
+.site-content--editorial .section-shell { width: min(100% - 2rem, 1360px); }
+.site-content--editorial main { position: relative; }
+.site-content--editorial main::before { position: absolute; top: 6.1rem; right: 4%; z-index: -1; width: min(32vw,28rem); aspect-ratio: 1; border: 1px solid rgba(49,82,239,.12); border-radius: 50%; box-shadow: 0 0 0 4rem rgba(49,82,239,.025),0 0 0 8rem rgba(49,82,239,.018); content: ""; }
+.site-content--editorial main.section-shell h1 { font-size: clamp(3.15rem,6.25vw,7rem) !important; letter-spacing: -.095em !important; line-height: .82 !important; }
+
+/* Reset the previous dark utility overrides only inside interior pages. */
+.site-content--editorial [class*="border-black/"] { border-color: var(--page-line) !important; }
+.site-content--editorial [class*="bg-white"] { background-color: var(--page-surface) !important; background-image: none !important; }
+.site-content--editorial [class*="bg-[#F7F7F2]"],
+.site-content--editorial [class*="bg-[#f7f7f2]"] { background-color: #f1eee7 !important; background-image: none !important; }
+.site-content--editorial [class*="bg-[#DED9FF]"] { background: linear-gradient(135deg,#e5ebff,#dbe4ff) !important; }
+.site-content--editorial [class*="bg-[#151515]"] { background-color: #172033 !important; }
+.site-content--editorial [class*="bg-[#CFFF72]"] { background-color: #cad7ff !important; color: var(--page-ink) !important; }
+.site-content--editorial [class*="text-neutral-950"],
+.site-content--editorial [class*="text-neutral-900"],
+.site-content--editorial [class*="text-neutral-800"] { color: var(--page-ink) !important; }
+.site-content--editorial [class*="text-neutral-700"],
+.site-content--editorial [class*="text-neutral-600"] { color: var(--page-muted) !important; }
+.site-content--editorial [class*="text-neutral-500"],
+.site-content--editorial [class*="text-neutral-400"] { color: #788190 !important; }
+.site-content--editorial [class*="text-[#4C5CFF]"] { color: var(--page-blue) !important; }
+.site-content--editorial [class*="rounded-\["] { border-radius: 1.35rem !important; }
+.site-content--editorial .browser-window,
+.site-content--editorial .project-card,
+.site-content--editorial .process-card,
+.site-content--editorial .mobile-menu-panel,
+.site-content--editorial form { border-color: var(--page-line) !important; background-color: var(--page-surface) !important; color: var(--page-ink) !important; box-shadow: 0 1.25rem 3rem rgba(23,32,51,.07) !important; }
+.site-content--editorial .preview-caption,
+.site-content--editorial .browser-url { border-color: rgba(23,32,51,.12) !important; background: rgba(255,253,248,.92) !important; color: var(--page-ink) !important; }
+.site-content--editorial .project-card { transition: transform .25s ease,box-shadow .25s ease; }
+.site-content--editorial .project-card:hover { transform: translateY(-4px); box-shadow: 0 1.6rem 3.6rem rgba(23,32,51,.12) !important; }
+.site-content--editorial .action-primary { background: var(--page-blue) !important; color: white !important; box-shadow: none !important; }
+.site-content--editorial .action-primary:hover { background: var(--page-blue-deep) !important; }
+.site-content--editorial input,.site-content--editorial select,.site-content--editorial textarea { color: var(--page-ink) !important; }
+.site-content--editorial .form-field { border-color: var(--page-line) !important; background: #f1eee7 !important; color: var(--page-ink) !important; }
+.site-content--editorial .form-field:focus { border-color: var(--page-blue) !important; box-shadow: 0 0 0 4px rgba(49,82,239,.1) !important; }
+
+/* Work becomes a readable archive rather than a showcase wall. */
+.site-content--editorial .project-card::before { background: var(--page-blue); }
+.site-content--editorial .project-card .browser-window { border-radius: .95rem; overflow: hidden; }
+.site-content--editorial .project-card .preview-caption { border-radius: .8rem; }
+.site-content--editorial .archive-filter-link { border-color: var(--page-line) !important; background: transparent !important; color: var(--page-muted) !important; }
+.site-content--editorial .archive-filter-link:hover { border-color: var(--page-blue) !important; color: var(--page-blue) !important; }
+.site-content--editorial .archive-filter-link[class*="bg-[#151515]"],
+.site-content--editorial .archive-filter-link[class*="bg-[#DED9FF]"] { border-color: var(--page-blue) !important; background: var(--page-blue) !important; color: white !important; }
+
+/* A compact, intentionally styled footer replaces the oversized block letters. */
+body:has(.site-content--editorial) footer,
+body:has(.studio-home) footer { background: var(--page-paper); }
+footer .footer-wordmark { color: white; font-family: var(--font-serif); font-size: clamp(4.1rem,10vw,9.4rem); font-style: italic; font-weight: 400; letter-spacing: -.08em; line-height: .76; }
+footer .footer-wordmark span { color: #cad7ff; }
+footer .footer-wordmark + div { color: rgba(255,255,255,.62); }
+footer [class*="bg-[#CFFF72]"] { background: var(--page-blue) !important; color: white !important; }
+
+@media (max-width: 760px) {
+  .site-content--editorial .section-shell { width: min(100% - 1.25rem, 1360px); }
+  .site-content--editorial main::before { top: 5rem; right: -7rem; width: 18rem; }
+  .site-content--editorial [class*="rounded-\["] { border-radius: 1.05rem !important; }
+  footer .footer-wordmark { font-size: clamp(4rem,20vw,6.4rem); }
+}

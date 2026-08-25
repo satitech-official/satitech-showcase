@@ -3,7 +3,7 @@ import LayoutShell from "@/components/layout/LayoutShell";
 import { siteConfig } from "@/config/site";
 
 const sameAs = Object.values(siteConfig.socials).filter(Boolean);
-const title = "Sati Tech — Digital Experiences That Move Businesses Forward";
+const title = "Sati Tech — Quietly Distinctive Digital Work";
 const description = siteConfig.description;
 
 export const metadata = {
@@ -62,7 +62,7 @@ export const metadata = {
 };
 
 export const viewport = {
-  themeColor: "#050816",
+  themeColor: "#f4f1eb",
   width: "device-width",
   initialScale: 1,
 };

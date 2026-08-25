@@ -4,11 +4,11 @@ import { AnimatePresence, motion, useReducedMotion, useScroll, useSpring } from 
 import Lenis from "lenis";
 import { ArrowRight, ArrowUp, Briefcase, ExternalLink, FileText, Globe2, MessageCircle, Search, Wrench, X } from "lucide-react";
 import { FacebookIcon, GitHubIcon, InstagramIcon } from "@/components/icons/BrandIcons";
+import BrandMark from "@/components/brand/BrandMark";
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createWhatsAppUrl, siteConfig } from "@/config/site";
 import { projectMetadata } from "@/config/project-metadata";
-import BrandMark from "@/components/brand/BrandMark";
 import { slugify } from "@/lib/utils";
 
 const projectSearchRecords = Object.entries(projectMetadata).map(([repoName, project]) => ({
@@ -24,6 +24,42 @@ function ScrollProgress() {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 110, damping: 24, mass: 0.3 });
   return <motion.div className="scroll-progress" style={{ scaleX }} aria-hidden="true" />;
+}
+
+function OpeningLoader() {
+  const reduceMotion = useReducedMotion();
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setVisible(false), reduceMotion ? 180 : 720);
+    return () => window.clearTimeout(timer);
+  }, [reduceMotion]);
+
+  return (
+    <AnimatePresence>
+      {visible ? (
+        <motion.div
+          className="premium-opening-loader"
+          role="status"
+          aria-label="Loading Sati Tech"
+          initial={false}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0, transition: { duration: reduceMotion ? 0.1 : 0.28, ease: "easeOut" } }}
+        >
+          <motion.div
+            className="premium-opening-loader__content"
+            initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <BrandMark size={58} priority />
+            <span className="premium-opening-loader__track" aria-hidden="true"><span /></span>
+            <span className="premium-opening-loader__label">Loading</span>
+          </motion.div>
+        </motion.div>
+      ) : null}
+    </AnimatePresence>
+  );
 }
 
 function SmoothScroll() {
@@ -65,67 +101,6 @@ function SmoothScroll() {
   }, [reduceMotion]);
 
   return null;
-}
-
-function OpeningLoader() {
-  const reduceMotion = useReducedMotion();
-  const [visible, setVisible] = useState(false);
-  const [phase, setPhase] = useState(0);
-  const words = ["SATI", "TECH", "CODE. CREATE. ELEVATE.", "WELCOME."];
-
-  useEffect(() => {
-    if (reduceMotion) return undefined;
-    const alreadySeen = sessionStorage.getItem("sati-loader-seen") === "true";
-    if (alreadySeen) return undefined;
-
-    const timers = [
-      setTimeout(() => setVisible(true), 0),
-      setTimeout(() => setPhase(1), 260),
-      setTimeout(() => setPhase(2), 500),
-      setTimeout(() => setPhase(3), 740),
-      setTimeout(() => {
-        sessionStorage.setItem("sati-loader-seen", "true");
-        setVisible(false);
-      }, 980),
-    ];
-
-    return () => timers.forEach(clearTimeout);
-  }, [reduceMotion]);
-
-  return (
-    <AnimatePresence>
-      {visible ? (
-        <motion.div
-          className="sati-loader"
-          initial={{ y: 0 }}
-          exit={{ y: "-100%", transition: { duration: 0.42, ease: [0.16, 1, 0.3, 1] } }}
-          aria-label="Loading Sati Tech portfolio"
-        >
-          <div className="section-shell text-center">
-            <motion.div className="mx-auto mb-6 w-fit" initial={{ opacity: 0, scale: 0.86, rotate: -4 }} animate={{ opacity: 1, scale: 1, rotate: 0 }} transition={{ duration: 0.52, ease: [0.22, 1, 0.36, 1] }}>
-              <BrandMark size={64} priority />
-            </motion.div>
-            <div className="mx-auto mb-8 h-px max-w-lg overflow-hidden bg-black/10">
-              <motion.div className="h-full bg-[#4C5CFF]" initial={{ width: "0%" }} animate={{ width: "100%" }} transition={{ duration: 2.05, ease: "easeInOut" }} />
-            </div>
-            <motion.div
-              key={phase}
-              initial={{ y: 36, opacity: 0, clipPath: "inset(0 0 100% 0)" }}
-              animate={{ y: 0, opacity: 1, clipPath: "inset(0 0 0% 0)" }}
-              exit={{ y: -24, opacity: 0, clipPath: "inset(100% 0 0 0)" }}
-              transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
-              className="text-[clamp(3rem,14vw,11rem)] font-black uppercase leading-[0.78] tracking-[-0.11em]"
-            >
-              {phase === 0 ? words[0].split("").map((letter, index) => (
-                <span key={`${letter}-${index}`} className="loader-letter" style={{ animationDelay: `${index * 0.035}s` }}>{letter === " " ? "\u00A0" : letter}</span>
-              )) : words[phase]}
-            </motion.div>
-            <p className="mt-5 text-xs font-black uppercase tracking-[0.22em] text-neutral-500">Digital systems for business growth</p>
-          </div>
-        </motion.div>
-      ) : null}
-    </AnimatePresence>
-  );
 }
 
 function CustomCursor() {
@@ -463,9 +438,9 @@ function BackToTop() {
 export default function SiteExperience({ commandOpen, setCommandOpen }) {
   return (
     <>
+      <OpeningLoader />
       <ScrollProgress />
       <SmoothScroll />
-      <OpeningLoader />
       <CustomCursor />
       <CommandPalette open={commandOpen} setOpen={setCommandOpen} />
       <FloatingSocialDock />

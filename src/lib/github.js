@@ -6,6 +6,8 @@ import { resolveProjectLiveUrl } from "@/lib/project-live-url";
 import { humanizeRepoName, slugify, truncate, unique } from "@/lib/utils";
 
 const API = "https://api.github.com";
+const hiddenRepositories = new Set(["satitech-showcase"]);
+const GITHUB_REQUEST_TIMEOUT = 6000;
 
 function githubHeaders() {
   const headers = {
@@ -116,17 +118,25 @@ function normalizeRepo(repo, index, liveUrl = "") {
 
 async function fetchGithubRepositories() {
   const endpoint = `${API}/orgs/${siteConfig.githubOrg}/repos?per_page=100&type=public&sort=updated`;
-  const response = await fetch(endpoint, {
-    headers: githubHeaders(),
-    next: { revalidate: 60 * 30 },
-  });
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), GITHUB_REQUEST_TIMEOUT);
 
-  if (!response.ok) {
-    throw new Error(`GitHub repositories request failed with ${response.status}`);
+  try {
+    const response = await fetch(endpoint, {
+      headers: githubHeaders(),
+      next: { revalidate: 60 * 30 },
+      signal: controller.signal,
+    });
+
+    if (!response.ok) {
+      throw new Error(`GitHub repositories request failed with ${response.status}`);
+    }
+
+    const repos = await response.json();
+    return Array.isArray(repos) ? repos.filter((repo) => !repo.fork && !repo.archived && !repo.disabled) : [];
+  } finally {
+    clearTimeout(timeout);
   }
-
-  const repos = await response.json();
-  return Array.isArray(repos) ? repos.filter((repo) => !repo.fork && !repo.archived && !repo.disabled) : [];
 }
 
 export const getProjects = cache(async () => {
@@ -146,7 +156,7 @@ export const getProjects = cache(async () => {
     })
   );
 
-  return normalized.sort((a, b) => {
+  return normalized.filter((project) => !hiddenRepositories.has(project.repoName)).sort((a, b) => {
     if (a.featured !== b.featured) return a.featured ? -1 : 1;
     if (a.sortOrder !== b.sortOrder) return a.sortOrder - b.sortOrder;
     return new Date(b.updatedAt || 0) - new Date(a.updatedAt || 0);

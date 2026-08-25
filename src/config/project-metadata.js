@@ -1,4 +1,5 @@
 export const featuredOrder = [
+  "cafe-pachmarhi",
   "saapna-resort-premium-website",
   "indian-cloth-store-premium-website",
   "the-good-bite-premium-website",
@@ -26,6 +27,30 @@ export const industryFilters = [
 export const technologyFilters = ["All", "Next.js", "React", "JavaScript", "TypeScript", "Tailwind", "GSAP", "Framer Motion", "Three.js"];
 
 export const projectMetadata = {
+  "cafe-pachmarhi": {
+    title: "Cafe Pachmarhi",
+    category: "Restaurant",
+    industry: "Food",
+    year: "2026",
+    featured: true,
+    sortOrder: 1,
+    coverImage: "/images/projects/cafe-pachmarhi-hero.jpg",
+    mobileImage: "/images/projects/cafe-pachmarhi-cafe-03.jpg",
+    gallery: [
+      "/images/projects/cafe-pachmarhi-hero.jpg",
+      "/images/projects/cafe-pachmarhi-cafe-02.jpg",
+      "/images/projects/cafe-pachmarhi-cafe-04.jpg",
+    ],
+    summary: "A warm, animated digital home for Cafe Pachmarhi, built around the menu, the place and a simple route to visit or enquire.",
+    technologies: ["Next.js", "React", "Tailwind", "GSAP", "Framer Motion"],
+    tone: "Hospitality with a slower, tactile rhythm",
+    caseStudy: {
+      challenge: "Bring the character of a single-use-plastic-free cafe online without making the experience feel like a generic restaurant template.",
+      approach: "Use real cafe imagery, a clear menu journey and gentle motion to make the visit feel personal before the first click to WhatsApp or maps.",
+      solution: "A mobile-first cafe website with menu discovery, gallery storytelling, contact routes and responsive interaction details.",
+      features: ["Interactive menu pathways", "Real cafe photography", "WhatsApp and map actions", "Mobile-first motion system"],
+    },
+  },
   "indian-cloth-store-premium-website": {
     title: "Indian Cloth Store",
     category: "E-Commerce",
@@ -250,6 +275,7 @@ export const projectMetadata = {
     category: "Restaurant",
     industry: "Hospitality",
     year: "2026",
+    coverImage: "/images/projects/luxury-catering-live.jpg",
     summary: "A premium catering website concept focused on refined event dining, service presentation and high-intent enquiries.",
     technologies: ["Next.js", "TypeScript", "Tailwind", "Framer Motion", "Supabase"],
     tone: "Luxury event catering",
@@ -261,6 +287,7 @@ export const projectMetadata = {
     year: "2026",
     featured: true,
     sortOrder: 1,
+    coverImage: "/images/projects/saapna-resort-live.jpg",
     summary: "A premium resort platform combining stays, experiences, dining, events, enquiries and a secure management system.",
     technologies: ["Next.js", "JavaScript", "Tailwind", "Supabase"],
     tone: "Immersive resort platform",
@@ -276,6 +303,7 @@ export const projectMetadata = {
     category: "Hospitality",
     industry: "Hospitality",
     year: "2026",
+    coverImage: "/images/projects/ashwamedh-resort-live.jpg",
     summary: "A cinematic nature-resort experience with amenities, gallery storytelling, booking enquiries and location integrations.",
     technologies: ["React", "JavaScript", "Tailwind", "Framer Motion"],
     tone: "Nature-led hospitality",
@@ -285,6 +313,7 @@ export const projectMetadata = {
     category: "E-Commerce",
     industry: "E-Commerce",
     year: "2026",
+    coverImage: "/images/projects/homespun-gifts-live.jpg",
     summary: "A personalized gifting storefront for hampers, scrapbooks and custom products with elegant product discovery and WhatsApp ordering.",
     technologies: ["Next.js", "TypeScript", "Tailwind", "Framer Motion"],
     tone: "Personalized gifting commerce",

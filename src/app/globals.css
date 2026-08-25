@@ -9,3 +9,6 @@
 @import "./globals-base.css";
 @import "./globals-components.css";
 @import "./globals-responsive.css";
+@import "./globals-studio.css";
+@import "./globals-theme.css";
+@import "./globals-premium.css";

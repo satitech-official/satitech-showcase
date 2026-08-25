@@ -1,5 +1,11 @@
 # Sati Tech — Digital Experiences That Move Businesses Forward
 
+<p align="center">
+  <a href="https://satitech-official.github.io/satitech-showcase/">
+    <img src="./public/og.webp" alt="Sati Tech portfolio preview" width="960" />
+  </a>
+</p>
+
 Production-ready portfolio for **Sati Tech Pvt. Ltd.** built by merging the strongest architecture, interaction and content systems from the two supplied projects.
 
 ## Highlights
@@ -17,7 +23,7 @@ Production-ready portfolio for **Sati Tech Pvt. Ltd.** built by merging the stro
 - Dynamic case studies with qualitative, metadata-backed narratives
 - Nine expandable services and an interactive service matcher
 - Lenis, Framer Motion and GSAP ScrollTrigger with cleanup
-- Session-aware opening loader and route transitions
+- Compact branded opening loader and route transitions
 - Keyboard command palette with focus containment and arrow navigation
 - Desktop-only contextual cursor
 - Optional PostgreSQL enquiry storage through Drizzle

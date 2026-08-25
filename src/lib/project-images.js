@@ -23,12 +23,12 @@ export function resolveProjectImages(repo, metadata = {}) {
   const asset = getProjectAsset(repo.name);
   const socialPreview = githubSocialPreview(repo);
   const candidates = [
-    asset?.cover,
     metadata.coverImage,
     metadata.cover,
     metadata.liveScreenshot,
     metadata.repositoryImage,
     metadata.readmeImage,
+    asset?.cover,
     socialPreview,
   ].filter(isSafeImageSource);
 

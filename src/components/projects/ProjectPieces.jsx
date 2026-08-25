@@ -1,14 +1,12 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight, Layers, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import { GitHubIcon } from "@/components/icons/BrandIcons";
 import { createWhatsAppUrl } from "@/config/site";
 import { cn, formatDate, getInitials, truncate } from "@/lib/utils";
-import { fadeUp, imageReveal, scaleIn, viewportOnce } from "@/motion/variants";
 
 function colorFromString(value = "sati") {
   let hash = 0;
@@ -43,11 +41,6 @@ export function ProjectFallbackVisual({ project, compact = false }) {
 
 export function BrowserPreview({ project, className, priority = false, compact = false, showSource = false }) {
   const [failed, setFailed] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const previewRef = useRef(null);
-  const reduceMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: previewRef, offset: ["start end", "end start"] });
-  const parallaxY = useTransform(scrollYProgress, [0, 1], compact ? [6, -6] : [18, -18]);
   const displayUrl = useMemo(() => {
     try {
       return project.liveUrl ? new URL(project.liveUrl).hostname : project.githubUrl.replace("https://", "");
@@ -57,21 +50,16 @@ export function BrowserPreview({ project, className, priority = false, compact =
   }, [project]);
 
   return (
-    <motion.div
-      ref={previewRef}
+    <div
       className={cn("browser-window group relative", className)}
       data-cursor={project.liveUrl ? "OPEN LIVE" : "VIEW"}
-      variants={imageReveal}
-      initial={reduceMotion || compact ? false : "hidden"}
-      whileInView="visible"
-      viewport={viewportOnce}
     >
       <div className="browser-url absolute left-[4.15rem] top-[0.68rem] z-10 hidden max-w-[54%] truncate rounded-full px-3 py-1 text-[0.6rem] font-semibold text-neutral-500 sm:block">
         {displayUrl}
       </div>
       <div className="relative aspect-[16/10] overflow-hidden">
         {!failed && project.image ? (
-          <motion.div className="absolute -inset-y-5 inset-x-0" style={{ y: reduceMotion ? 0 : parallaxY }}>
+          <div className="absolute -inset-y-5 inset-x-0">
             <Image
               src={project.image}
               alt={project.imageAlt || `${project.title} preview`}
@@ -81,17 +69,14 @@ export function BrowserPreview({ project, className, priority = false, compact =
               quality={82}
               sizes="(max-width: 768px) 94vw, (max-width: 1200px) 54vw, 760px"
               className="project-preview-image object-cover object-top"
-              onLoad={() => setLoading(false)}
               onError={() => {
-                setLoading(false);
                 setFailed(true);
               }}
             />
-          </motion.div>
+          </div>
         ) : (
           <ProjectFallbackVisual project={project} compact={compact} />
         )}
-        {loading && !failed && project.image ? <div className="project-image-loading" aria-label={`Loading ${project.title} project image`} /> : null}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/18 to-transparent" />
         {showSource && project.image ? (
           <div className="real-capture-badge" aria-label="Real image from this GitHub project">
@@ -112,7 +97,7 @@ export function BrowserPreview({ project, className, priority = false, compact =
           <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#151515] text-white"><ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" /></span>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -197,18 +182,11 @@ export function ProjectActions({ project, className, includeCaseStudy = true, in
 
 export function ProjectCard({ project, index = 0 }) {
   const colors = useMemo(() => colorFromString(project.repoName || project.title), [project.repoName, project.title]);
-  const reduceMotion = useReducedMotion();
 
   return (
-    <motion.article
-      layout
+    <article
       style={{ "--project-accent": colors.a }}
       className="group project-card relative overflow-hidden rounded-[2rem] border border-black/10 bg-white p-2.5 shadow-[0_18px_60px_rgba(21,21,21,0.06)]"
-      variants={fadeUp}
-      initial={reduceMotion ? false : "hidden"}
-      whileInView="visible"
-      viewport={viewportOnce}
-      transition={{ delay: Math.min(index * 0.035, 0.14) }}
     >
       <ProjectPreviewLink project={project}>
         <BrowserPreview project={project} compact showSource className="shadow-none" />
@@ -230,24 +208,19 @@ export function ProjectCard({ project, index = 0 }) {
         </div>
         <ProjectActions project={project} includeCaseStudy includeEnquiry={false} compact className="mt-5 border-t border-black/8 pt-4" />
       </div>
-    </motion.article>
+    </article>
   );
 }
 
 export function FeaturedProject({ project, index = 0 }) {
   const flip = index % 2 === 1;
   const immersive = index === 2;
-  const reduceMotion = useReducedMotion();
 
   if (immersive) {
     return (
-      <motion.article
+      <article
       id={`project-${String(index + 1).padStart(2, "0")}`}
       className="featured-real-project group overflow-hidden rounded-[2rem] border border-black/10 bg-[#151515] p-3 text-white shadow-[0_30px_110px_rgba(21,21,21,0.16)] sm:rounded-[3rem] sm:p-5"
-        variants={scaleIn}
-        initial={reduceMotion ? false : "hidden"}
-        whileInView="visible"
-        viewport={viewportOnce}
       >
         <div className="grid gap-5 lg:grid-cols-[0.85fr_1.15fr] lg:items-stretch">
           <div className="flex flex-col justify-between p-3 sm:p-5">
@@ -267,18 +240,14 @@ export function FeaturedProject({ project, index = 0 }) {
             <BrowserPreview project={project} className="featured-real-image min-h-[360px] shadow-none" priority={index === 0} showSource />
           </ProjectPreviewLink>
         </div>
-      </motion.article>
+      </article>
     );
   }
 
   return (
-    <motion.article
+    <article
       id={`project-${String(index + 1).padStart(2, "0")}`}
       className={cn("featured-real-project grid gap-6 rounded-[2rem] border border-black/10 bg-white/78 p-3 shadow-[0_22px_80px_rgba(21,21,21,0.08)] backdrop-blur sm:rounded-[3rem] sm:p-5 lg:grid-cols-2 lg:items-center", flip && "lg:[&>*:first-child]:order-2")}
-      variants={scaleIn}
-      initial={reduceMotion ? false : "hidden"}
-      whileInView="visible"
-      viewport={viewportOnce}
     >
       <ProjectPreviewLink project={project}>
         <BrowserPreview project={project} priority={index === 0} showSource className={cn("featured-real-image", index === 1 && "lg:-rotate-1", index === 3 && "lg:rotate-1")} />
@@ -297,7 +266,7 @@ export function FeaturedProject({ project, index = 0 }) {
         </div>
         <ProjectActions project={project} includeEnquiry={false} className="mt-8" />
       </div>
-    </motion.article>
+    </article>
   );
 }
 

@@ -9,5 +9,10 @@ export const metadata = {
 
 export default async function WorkPage() {
   const [projects, facets] = await Promise.all([getProjects(), getProjectFacets()]);
-  return <WorkExplorer projects={projects} facets={facets} initialCategory="All" initialSearch="" />;
+  return (
+    <WorkExplorer
+      projects={projects}
+      facets={facets}
+    />
+  );
 }

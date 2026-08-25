@@ -1,20 +1,21 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import SiteExperience from "@/components/layout/SiteExperience";
-import TechBackdrop from "@/components/background/TechBackdrop";
 
 export default function LayoutShell({ children }) {
   const [commandOpen, setCommandOpen] = useState(false);
+  const pathname = usePathname();
+  const isStudioHome = pathname === "/";
 
   return (
     <>
-      <TechBackdrop />
       <SiteExperience commandOpen={commandOpen} setCommandOpen={setCommandOpen} />
       <Header openCommand={() => setCommandOpen(true)} />
-      <div className="site-content">{children}</div>
+      <div className={`site-content ${isStudioHome ? "site-content--home" : "site-content--editorial"}`}>{children}</div>
       <Footer />
     </>
   );
