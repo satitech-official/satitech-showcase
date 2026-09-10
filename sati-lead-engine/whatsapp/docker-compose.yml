@@ -1,0 +1,11 @@
+services:
+  waha:
+    image: devlikeapro/waha:latest
+    container_name: sati-waha
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - ./.sessions:/app/.sessions
