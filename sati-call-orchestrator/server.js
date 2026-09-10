@@ -4,8 +4,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const PORT=Number(process.env.PORT||8090);
-const LEAD=process.env.LEAD_ENGINE_URL||'http://localhost:8080';
+const LEAD=process.env.LEAD_ENGINE_URL||'https://sati-ai-sales-manager.vercel.app';
 const VOICE=process.env.VOICE_AGENT_URL||'http://localhost:8081';
+const WHATSAPP=process.env.WHATSAPP_CONNECTOR_URL||'http://127.0.0.1:8787';
 const API_KEY=process.env.VOICE_AGENT_API_KEY||'';
 const CALLBACK=process.env.PUBLIC_CALLBACK_BASE_URL||`http://localhost:${PORT}`;
 const AGENT=process.env.AGENT_SLUG||'sati-sales';
@@ -39,11 +40,11 @@ async function runCampaign(input){const city=String(input.city||'').trim(),categ
 
 async function handleTool(input){const action=String(input.action||'');const leadId=String(input.lead_id||'');if(!leadId)throw new Error('lead_id required');const state=load();const rec=state.leads[leadId]||{};rec.updated_at=new Date().toISOString();
  if(action==='qualification'){rec.interest=input.interest||'unknown';rec.need=input.need||'';rec.budget=input.budget||'';rec.callback=input.callback||'';if(input.do_not_contact===true)rec.do_not_contact=true;}
- else if(action==='whatsapp_consent'){if(input.consent!==true)throw new Error('explicit consent=true required');rec.whatsapp_consent=true;rec.whatsapp_consent_at=new Date().toISOString();rec.whatsapp_consent_source='voice_call_explicit_permission';const lead=rec.lead||input.lead||{};const phone=input.phone||lead.whatsapp||lead.phone;if(!phone)throw new Error('no WhatsApp phone available');const wr=await fetch(`${LEAD}/api/whatsapp/send`,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({phone,text:input.text||followupText(lead),consent:true,consentSource:'explicit_business_permission'})});const wd=await wr.json();if(!wr.ok)throw new Error(wd.error||'WhatsApp send failed');rec.whatsapp_sent_at=new Date().toISOString();rec.whatsapp_result=wd;}
+ else if(action==='whatsapp_consent'){if(input.consent!==true)throw new Error('explicit consent=true required');rec.whatsapp_consent=true;rec.whatsapp_consent_at=new Date().toISOString();rec.whatsapp_consent_source='voice_call_explicit_permission';const lead=rec.lead||input.lead||{};const phone=input.phone||lead.whatsapp||lead.phone;if(!phone)throw new Error('no WhatsApp phone available');const wr=await fetch(`${WHATSAPP}/send`,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({phone,text:input.text||followupText(lead),consent:true,consentSource:'explicit_business_permission'})});const wd=await wr.json();if(!wr.ok)throw new Error(wd.error||'WhatsApp send failed');rec.whatsapp_sent_at=new Date().toISOString();rec.whatsapp_result=wd;}
  else throw new Error('unknown action');state.leads[leadId]=rec;state.events.push({at:new Date().toISOString(),lead_id:leadId,action});save(state);return {ok:true,lead:rec};
 }
 
-const server=http.createServer(async(req,res)=>{try{const u=new URL(req.url,`http://${req.headers.host||'localhost'}`);if(req.method==='GET'&&u.pathname==='/health')return json(res,200,{ok:true,service:'sati-call-orchestrator',lead_engine:LEAD,voice_agent:VOICE});
+const server=http.createServer(async(req,res)=>{try{const u=new URL(req.url,`http://${req.headers.host||'localhost'}`);if(req.method==='GET'&&u.pathname==='/health')return json(res,200,{ok:true,service:'sati-call-orchestrator',lead_engine:LEAD,voice_agent:VOICE,whatsapp_connector:WHATSAPP});
  if(req.method==='GET'&&u.pathname==='/api/status')return json(res,200,load());
  if(req.method==='POST'&&u.pathname==='/api/campaign/run')return json(res,200,await runCampaign(await body(req)));
  if(req.method==='POST'&&u.pathname==='/api/tools')return json(res,200,await handleTool(await body(req)));
