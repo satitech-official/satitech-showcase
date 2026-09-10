@@ -1,0 +1,2 @@
+import { overpass, normalize } from './_core.js';
+export default async function handler(req,res){try{const category=String(req.query?.category||'hotel'),city=String(req.query?.city||'').trim(),onlyNo=String(req.query?.noWebsite??'true')!=='false';const data=await overpass(category,city);const leads=normalize(data,category,city,onlyNo);res.status(200).json({count:leads.length,category,city,onlyNoWebsite:onlyNo,leads})}catch(e){res.status(502).json({error:e.message})}}
