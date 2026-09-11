@@ -16,8 +16,8 @@ jobs:
           test_one(){
             p="$1"; c="$2";
             echo "=== $p | $c ==="
-            out=$(curl -fsS --retry 2 --max-time 20 --get "$base" --data-urlencode "platform=$p" --data-urlencode "city=$c" --data-urlencode 'limit=5')
-            echo "$out" | jq '{ok,platform,city,count,source,note,error,sample:(.leads[0] // null)}'
+            out=$(curl -sS --retry 1 --max-time 25 --get "$base" --data-urlencode "platform=$p" --data-urlencode "city=$c" --data-urlencode 'limit=5' --data-urlencode 'radius=18000')
+            echo "$out" | jq '{ok,platform,city,count,source,endpoint,radius_m,note,error,sample:(.leads[0] // null)}'
             echo "$out" | jq -e '.ok == true' >/dev/null
           }
           test_one instagram Dubai
