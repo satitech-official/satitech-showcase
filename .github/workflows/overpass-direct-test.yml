@@ -1,0 +1,26 @@
+name: Overpass Direct Social Test
+on:
+  push:
+    paths:
+      - '.github/workflows/overpass-direct-test.yml'
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Direct public social-tag queries
+        shell: bash
+        run: |
+          set -euo pipefail
+          ep='https://overpass-api.de/api/interpreter'
+          q(){
+            name="$1"; query="$2";
+            echo "=== $name ==="
+            out=$(curl -fsS --max-time 20 --get "$ep" --data-urlencode "data=$query")
+            echo "$out" | jq '{elements:(.elements|length),sample:(.elements[0].tags // null)}'
+          }
+          q 'instagram-dubai' '[out:json][timeout:8];(node["contact:instagram"](25.12,55.17,25.30,55.38);node["instagram"](25.12,55.17,25.30,55.38););out tags 10;'
+          q 'facebook-dubai' '[out:json][timeout:8];(node["contact:facebook"](25.12,55.17,25.30,55.38);node["facebook"](25.12,55.17,25.30,55.38););out tags 10;'
+          q 'linkedin-london' '[out:json][timeout:8];(node["contact:linkedin"](51.44,-0.21,51.58,0.05);node["linkedin"](51.44,-0.21,51.58,0.05););out tags 10;'
+          q 'whatsapp-indore' '[out:json][timeout:8];(node["contact:whatsapp"](22.62,75.75,22.83,75.98);node["whatsapp"](22.62,75.75,22.83,75.98););out tags 10;'
+          q 'email-indore' '[out:json][timeout:8];(node["contact:email"](22.62,75.75,22.83,75.98);node["email"](22.62,75.75,22.83,75.98););out tags 10;'
