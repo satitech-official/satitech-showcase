@@ -18,16 +18,23 @@ jobs:
           set -euo pipefail
           page='https://satitech-official.github.io/satitech-showcase/sales-os/'
           sync='https://kmlvyemgiubjagksarpt.supabase.co/functions/v1/gateway-sync'
-          leads='https://sati-sales-os-live.vercel.app/api/leads?city=Indore&category=restaurant'
+          leads='https://sati-sales-os-live.vercel.app/api/lead-search?city=Indore&category=restaurant'
+          echo '[1/7] live dashboard'
           curl -fsSL --max-time 20 "$page" -o /tmp/index.html
           grep -q 'v0.9.2' /tmp/index.html
           grep -q 'v092-patch.js' /tmp/index.html
+          echo '[2/7] dashboard JavaScript'
           curl -fsSL --max-time 20 "${page}v09.js?v=092" -o /tmp/base.js
           curl -fsSL --max-time 20 "${page}v092-patch.js?v=1" -o /tmp/patch.js
           node --check /tmp/base.js
           node --check /tmp/patch.js
-          curl -fsSL --max-time 20 "$sync/health" | tee /tmp/health.json | jq -e '.ok == true'
-          curl -fsSL --max-time 20 "$sync/connectors" | tee /tmp/connectors.json | jq -e '.ok == true and (.connectors|type == "array")'
-          curl -fsSL --max-time 20 "$sync/snapshot" | tee /tmp/snapshot.json | jq -e '.ok == true'
-          curl -fsSL --max-time 20 "$leads" | tee /tmp/leads.json | jq -e '.ok == true and (.leads|type == "array")'
+          echo '[3/7] cloud health'
+          curl -fsSL --max-time 20 "$sync/health" | jq -e '.ok == true'
+          echo '[4/7] connector heartbeat'
+          curl -fsSL --max-time 20 "$sync/connectors" | jq -e '.ok == true and (.connectors|type == "array")'
+          echo '[5/7] automation snapshot'
+          curl -fsSL --max-time 20 "$sync/snapshot" | jq -e '.ok == true'
+          echo '[6/7] live lead discovery'
+          curl -fsSL --max-time 20 "$leads" | jq -e '.ok == true and (.leads|type == "array") and (.count >= 1)'
+          echo '[7/7] acceptance complete'
           echo 'ACCEPTANCE_OK'
