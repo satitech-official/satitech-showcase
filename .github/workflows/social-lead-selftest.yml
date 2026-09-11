@@ -1,0 +1,29 @@
+name: Social Lead Self Test
+on:
+  push:
+    paths:
+      - '.github/workflows/social-lead-selftest.yml'
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test social lead endpoints
+        shell: bash
+        run: |
+          set -euo pipefail
+          base='https://kmlvyemgiubjagksarpt.supabase.co/functions/v1/social-lead-search'
+          test_one(){
+            p="$1"; c="$2";
+            echo "=== $p | $c ==="
+            out=$(curl -fsS --retry 2 --max-time 20 --get "$base" --data-urlencode "platform=$p" --data-urlencode "city=$c" --data-urlencode 'limit=5')
+            echo "$out" | jq '{ok,platform,city,count,source,note,error,sample:(.leads[0] // null)}'
+            echo "$out" | jq -e '.ok == true' >/dev/null
+          }
+          test_one instagram Dubai
+          test_one facebook Dubai
+          test_one linkedin London
+          test_one x London
+          test_one reddit 'New York'
+          test_one whatsapp 'Indore, India'
+          test_one email 'Indore, India'
