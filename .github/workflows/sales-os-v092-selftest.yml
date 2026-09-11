@@ -1,0 +1,33 @@
+name: Sales OS v0.9.2 Acceptance
+on:
+  push:
+    paths:
+      - 'sales-os/index.html'
+      - 'sales-os/v092-patch.js'
+      - '.github/workflows/sales-os-v092-selftest.yml'
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for Pages publish
+        run: sleep 25
+      - name: Test live dashboard and APIs
+        shell: bash
+        run: |
+          set -euo pipefail
+          page='https://satitech-official.github.io/satitech-showcase/sales-os/'
+          sync='https://kmlvyemgiubjagksarpt.supabase.co/functions/v1/gateway-sync'
+          leads='https://sati-sales-os-live.vercel.app/api/leads?city=Indore&category=restaurant'
+          curl -fsSL --max-time 20 "$page" -o /tmp/index.html
+          grep -q 'v0.9.2' /tmp/index.html
+          grep -q 'v092-patch.js' /tmp/index.html
+          curl -fsSL --max-time 20 "${page}v09.js?v=092" -o /tmp/base.js
+          curl -fsSL --max-time 20 "${page}v092-patch.js?v=1" -o /tmp/patch.js
+          node --check /tmp/base.js
+          node --check /tmp/patch.js
+          curl -fsSL --max-time 20 "$sync/health" | tee /tmp/health.json | jq -e '.ok == true'
+          curl -fsSL --max-time 20 "$sync/connectors" | tee /tmp/connectors.json | jq -e '.ok == true and (.connectors|type == "array")'
+          curl -fsSL --max-time 20 "$sync/snapshot" | tee /tmp/snapshot.json | jq -e '.ok == true'
+          curl -fsSL --max-time 20 "$leads" | tee /tmp/leads.json | jq -e '.ok == true and (.leads|type == "array")'
+          echo 'ACCEPTANCE_OK'
