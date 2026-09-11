@@ -1,0 +1,53 @@
+name: Sati Sales OS v0.9.1 Acceptance
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/v091-acceptance.yml'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dashboard assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          base='https://satitech-official.github.io/satitech-showcase/sales-os'
+          for p in '/' '/v09.js' '/v09.css' '/sample.html?business=Acceptance%20Test&category=hotel&city=Indore'; do
+            code=$(curl -L -sS -o /tmp/out -w '%{http_code}' --max-time 20 "$base$p")
+            test "$code" = '200'
+            test -s /tmp/out
+            echo "PASS $p HTTP $code bytes $(wc -c </tmp/out)"
+          done
+          curl -L -fsS --max-time 20 "$base/" | grep -q 'Professional Lead Finder'
+          curl -L -fsS --max-time 20 "$base/v09.js" | grep -q '/automation/analytics'
+          echo 'PASS dashboard integrity markers'
+      - name: Gateway sync health
+        shell: bash
+        run: |
+          set -euo pipefail
+          base='https://kmlvyemgiubjagksarpt.supabase.co/functions/v1/gateway-sync'
+          curl -fsS --max-time 15 "$base/health" | tee /tmp/h.json | jq -e '.ok==true and .mode=="status-only"' >/dev/null
+          curl -fsS --max-time 15 "$base/connectors" | tee /tmp/c.json | jq -e '.ok==true and (.connectors|type=="array")' >/dev/null
+          echo "PASS gateway sync, connectors $(jq '.connectors|length' /tmp/c.json)"
+      - name: Business-first discovery sources
+        shell: bash
+        run: |
+          set -euo pipefail
+          query_city(){
+            local name="$1" bb="$2" key="$3" val="$4"
+            q="[out:json][timeout:12];(nwr[\"$key\"=\"$val\"][\"name\"]($bb););out center tags qt 80;"
+            for ep in 'https://overpass-api.de/api/interpreter' 'https://overpass.kumi.systems/api/interpreter' 'https://overpass.private.coffee/api/interpreter'; do
+              if out=$(curl -fsS --max-time 18 --get "$ep" --data-urlencode "data=$q" 2>/dev/null); then
+                count=$(echo "$out" | jq '.elements|length')
+                echo "PASS $name source=$ep businesses=$count"
+                echo "$out" | jq '{businesses:(.elements|length),email:([.elements[]|select(.tags.email or .tags["contact:email"])]|length),instagram:([.elements[]|select(.tags.instagram or .tags["contact:instagram"])]|length),facebook:([.elements[]|select(.tags.facebook or .tags["contact:facebook"])]|length),linkedin:([.elements[]|select(.tags.linkedin or .tags["contact:linkedin"])]|length),whatsapp:([.elements[]|select(.tags.whatsapp or .tags["contact:whatsapp"])]|length)}'
+                return 0
+              fi
+            done
+            echo "FAIL $name all public sources unavailable" >&2
+            return 1
+          }
+          query_city 'Indore restaurants' '22.62,75.75,22.83,75.98' amenity restaurant
+          sleep 3
+          query_city 'Dubai hotels' '25.12,55.17,25.30,55.38' tourism hotel
