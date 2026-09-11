@@ -19,16 +19,20 @@ jobs:
             test -s /tmp/out
             echo "PASS $p HTTP $code bytes $(wc -c </tmp/out)"
           done
-          curl -L -fsS --max-time 20 "$base/" | grep -q 'Professional Lead Finder'
-          curl -L -fsS --max-time 20 "$base/v09.js" | grep -q '/automation/analytics'
+          curl -L -fsS --max-time 20 "$base/" -o /tmp/dashboard.html
+          grep -q 'Professional Lead Finder' /tmp/dashboard.html
+          curl -L -fsS --max-time 20 "$base/v09.js" -o /tmp/dashboard.js
+          grep -q '/automation/analytics' /tmp/dashboard.js
           echo 'PASS dashboard integrity markers'
       - name: Gateway sync health
         shell: bash
         run: |
           set -euo pipefail
           base='https://kmlvyemgiubjagksarpt.supabase.co/functions/v1/gateway-sync'
-          curl -fsS --max-time 15 "$base/health" | tee /tmp/h.json | jq -e '.ok==true and .mode=="status-only"' >/dev/null
-          curl -fsS --max-time 15 "$base/connectors" | tee /tmp/c.json | jq -e '.ok==true and (.connectors|type=="array")' >/dev/null
+          curl -fsS --max-time 15 "$base/health" -o /tmp/h.json
+          jq -e '.ok==true and .mode=="status-only"' /tmp/h.json >/dev/null
+          curl -fsS --max-time 15 "$base/connectors" -o /tmp/c.json
+          jq -e '.ok==true and (.connectors|type=="array")' /tmp/c.json >/dev/null
           echo "PASS gateway sync, connectors $(jq '.connectors|length' /tmp/c.json)"
       - name: Business-first discovery sources
         shell: bash
