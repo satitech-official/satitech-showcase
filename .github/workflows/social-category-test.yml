@@ -1,0 +1,25 @@
+name: Social Category Discovery Test
+on:
+  push:
+    paths:
+      - '.github/workflows/social-category-test.yml'
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test category-first social discovery
+        shell: bash
+        run: |
+          set -euo pipefail
+          ep='https://overpass-api.de/api/interpreter'
+          test_city(){
+            name="$1"; bb="$2";
+            echo "=== $name ==="
+            query="[out:json][timeout:12];(node[\"amenity\"=\"restaurant\"]($bb);node[\"tourism\"=\"hotel\"]($bb);node[\"tourism\"=\"resort\"]($bb);node[\"office\"=\"estate_agent\"]($bb);node[\"shop\"=\"hairdresser\"]($bb);node[\"leisure\"=\"fitness_centre\"]($bb););out tags 400;"
+            out=$(curl -fsS --max-time 25 --get "$ep" --data-urlencode "data=$query")
+            echo "$out" | jq '{total:(.elements|length), instagram:([.elements[]|select(.tags["contact:instagram"] or .tags.instagram)]|length), facebook:([.elements[]|select(.tags["contact:facebook"] or .tags.facebook)]|length), linkedin:([.elements[]|select(.tags["contact:linkedin"] or .tags.linkedin)]|length), twitter:([.elements[]|select(.tags["contact:twitter"] or .tags.twitter or .tags["contact:x"])]|length), whatsapp:([.elements[]|select(.tags["contact:whatsapp"] or .tags.whatsapp)]|length), email:([.elements[]|select(.tags["contact:email"] or .tags.email)]|length), samples:[.elements[]|select(.tags["contact:instagram"] or .tags.instagram or .tags["contact:facebook"] or .tags.facebook or .tags["contact:linkedin"] or .tags.linkedin or .tags["contact:twitter"] or .tags.twitter or .tags["contact:whatsapp"] or .tags.whatsapp)|.tags|{name,instagram:.instagram,cinstagram:.["contact:instagram"],facebook:.facebook,cfacebook:.["contact:facebook"],linkedin:.linkedin,clinkedin:.["contact:linkedin"],twitter:.twitter,ctwitter:.["contact:twitter"],whatsapp:.whatsapp,cwhatsapp:.["contact:whatsapp"]}][:5]}'
+          }
+          test_city dubai '25.12,55.17,25.30,55.38'
+          test_city london '51.44,-0.21,51.58,0.05'
+          test_city indore '22.62,75.75,22.83,75.98'
