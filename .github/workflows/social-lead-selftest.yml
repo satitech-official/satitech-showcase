@@ -8,22 +8,20 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Test social lead endpoints
+      - name: Test category-first social lead endpoint
         shell: bash
         run: |
           set -euo pipefail
           base='https://kmlvyemgiubjagksarpt.supabase.co/functions/v1/social-lead-search'
-          test_one(){
-            p="$1"; c="$2";
-            echo "=== $p | $c ==="
-            out=$(curl -sS --retry 1 --max-time 25 --get "$base" --data-urlencode "platform=$p" --data-urlencode "city=$c" --data-urlencode 'limit=5' --data-urlencode 'radius=18000')
-            echo "$out" | jq '{ok,platform,city,count,source,endpoint,radius_m,note,error,sample:(.leads[0] // null)}'
-            echo "$out" | jq -e '.ok == true' >/dev/null
+          test_city(){
+            c="$1";
+            echo "=== $c ==="
+            out=$(curl -fsS --retry 1 --max-time 25 --get "$base" --data-urlencode 'platform=all' --data-urlencode "city=$c" --data-urlencode 'limit=100')
+            echo "$out" | jq '{ok,city,count,businesses_scanned,counts,source,endpoint,note,error,samples:(.leads[:4]|map({platform,business_name,profile_url,public_contact,website_status,lead_score}))}'
+            echo "$out" | jq -e '.ok == true and (.businesses_scanned >= 0)' >/dev/null
           }
-          test_one instagram Dubai
-          test_one facebook Dubai
-          test_one linkedin London
-          test_one x London
-          test_one reddit 'New York'
-          test_one whatsapp 'Indore, India'
-          test_one email 'Indore, India'
+          test_city Dubai
+          sleep 3
+          test_city London
+          sleep 3
+          test_city 'Indore, India'
