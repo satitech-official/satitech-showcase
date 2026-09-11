@@ -38,6 +38,15 @@ jobs:
       - name: Build static portfolio
         run: npm run build
 
+      - name: Include Sati Sales OS
+        run: |
+          mkdir -p out/sales-os
+          cp -R sales-os/. out/sales-os/
+          test -s out/sales-os/index.html
+          test -s out/sales-os/v09.js
+          test -s out/sales-os/v09.css
+          test -s out/sales-os/sample.html
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
