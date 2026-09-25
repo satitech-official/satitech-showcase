@@ -318,6 +318,22 @@ export const projectMetadata = {
     technologies: ["Next.js", "TypeScript", "Tailwind", "Framer Motion"],
     tone: "Personalized gifting commerce",
   },
+  "ikinovac-global-engineering-platform": {
+    title: "IKINOVAC GLOBAL",
+    category: "Business",
+    industry: "Business",
+    year: "2026",
+    liveUrl: "https://www.ikinovac.com/",
+    summary: "A global industrial sourcing and engineering procurement platform for valves, automation, piping, instrumentation, MRO and project supply requirements worldwide.",
+    technologies: ["Next.js", "JavaScript", "React"],
+    tone: "Global industrial procurement platform",
+    caseStudy: {
+      challenge: "Present a broad industrial sourcing and engineering procurement capability in a way international buyers can search, understand and convert into structured RFQs.",
+      approach: "Organize product families, market coverage, engineering knowledge and procurement workflows around high-intent industrial search and enquiry journeys.",
+      solution: "A search-ready global industrial platform with structured product categories, country landing pages, technical resources and RFQ-led conversion paths.",
+      features: ["Global industrial product directory", "Country and market landing pages", "Engineering procurement knowledge hub", "RFQ-led enquiry workflow"],
+    },
+  },
 };
 
 export const fallbackRepositories = Object.entries(projectMetadata).map(([name, meta], index) => ({
