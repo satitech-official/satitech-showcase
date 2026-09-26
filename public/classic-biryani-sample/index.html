@@ -1,1 +1,503 @@
-The requested file reference is not currently visible. Use files.search or files.list to rediscover the file, then retry with a returned ref_id or file_id.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#120b08">
+<meta name="description" content="The Classic Biryani, Wadarvadi Pune — biryani, mutton thali, chicken thali, delivery and takeaway.">
+<title>The Classic Biryani | Wadarvadi, Pune</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<style>
+:root{
+ --ink:#160805;--ink2:#2b0f0a;--cream:#f9ead2;--cream2:#ead0aa;
+ --gold:#d9952e;--gold2:#f7c85c;--rust:#a13c20;--red:#65120f;
+ --muted:#a99788;--line:rgba(255,255,255,.12);--serif:"Cormorant Garamond",serif;
+ --sans:"Manrope",sans-serif
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:#fff;font-family:var(--sans);overflow-x:hidden}
+body.menu-open{overflow:hidden}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+.container{width:min(1180px,calc(100% - 40px));margin:auto}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.045;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E")}
+.topbar{background:#efc163;color:#25150b;padding:8px 0;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.topbar .container{display:flex;justify-content:center;gap:24px;flex-wrap:wrap}
+.nav{position:fixed;top:31px;left:0;right:0;z-index:90;transition:.35s}
+.nav.scrolled{top:0;background:rgba(16,9,6,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}
+.nav-inner{height:82px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.logo{display:flex;align-items:center;gap:12px;min-width:210px}.logo-img{width:66px;height:66px;object-fit:contain;filter:drop-shadow(0 7px 18px rgba(0,0,0,.42))}.hero-logo{width:min(350px,72vw);margin-bottom:14px;filter:drop-shadow(0 18px 50px rgba(0,0,0,.4))}
+.logo-mark{width:48px;height:48px;display:grid;place-items:center;border:1px solid rgba(241,200,109,.48);transform:rotate(45deg);background:linear-gradient(145deg,rgba(213,161,74,.17),rgba(255,255,255,.02));box-shadow:inset 0 0 30px rgba(213,161,74,.06)}
+.logo-mark b{transform:rotate(-45deg);font-family:var(--serif);font-size:18px;color:var(--gold2)}
+.logo-copy strong{display:block;font-family:var(--serif);font-size:18px;line-height:.9;letter-spacing:.06em}
+.logo-copy span{display:block;color:#c4b09f;font-size:8px;letter-spacing:.23em;margin-top:7px;text-transform:uppercase}
+.nav-links{display:flex;gap:26px;align-items:center}
+.nav-links a{font-size:12px;font-weight:700;color:#e9ded4;position:relative}
+.nav-links a:after{content:"";position:absolute;left:0;right:100%;bottom:-9px;height:1px;background:var(--gold2);transition:.25s}
+.nav-links a:hover:after{right:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;padding:13px 18px;border:1px solid transparent;font-size:12px;font-weight:800;transition:.25s;cursor:pointer}
+.btn:hover{transform:translateY(-2px)}
+.btn-gold{color:#281509;background:linear-gradient(135deg,var(--gold2),var(--gold));box-shadow:0 14px 36px rgba(213,161,74,.22)}
+.btn-outline{border-color:rgba(255,255,255,.24);color:#fff;background:rgba(255,255,255,.035)}
+.menu-toggle{display:none;background:none;border:0;color:#fff;font-size:22px}
+
+.hero{min-height:100vh;display:grid;align-items:center;position:relative;overflow:hidden;padding-top:92px}
+.hero-photo{position:absolute;inset:0;overflow:hidden;background-image:linear-gradient(90deg,rgba(12,7,5,.97) 0%,rgba(12,7,5,.86) 35%,rgba(12,7,5,.28) 72%,rgba(12,7,5,.48) 100%),url("https://img02.restaurantguru.com/ca10-The-Classic-Biryani-Pune-meals.jpg");background-size:cover;background-position:center;filter:saturate(.96)}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;opacity:.42;filter:saturate(.95) contrast(1.02) brightness(.72)}
+.hero-photo:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,7,5,.90) 0%,rgba(12,7,5,.76) 38%,rgba(12,7,5,.24) 76%,rgba(12,7,5,.45) 100%);z-index:1}
+.hero-photo:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 50%,rgba(218,130,46,.16),transparent 36%);z-index:1}
+.video-credit{position:absolute;right:16px;bottom:14px;z-index:2;background:rgba(11,7,5,.64);border:1px solid rgba(255,255,255,.12);padding:7px 11px;border-radius:999px;font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:#ddc4aa;backdrop-filter:blur(8px)}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.02fr .98fr;align-items:center;min-height:calc(100vh - 80px)}
+.hero-copy{padding:90px 0 70px;max-width:700px}
+.kicker{display:flex;align-items:center;gap:10px;color:#d9b986;text-transform:uppercase;letter-spacing:.2em;font-size:10px;font-weight:800}
+.kicker:before{content:"";width:38px;height:1px;background:#d9b986}
+.hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(64px,8.2vw,118px);line-height:.84;letter-spacing:-.045em;margin:22px 0}
+.hero h1 em{color:var(--gold2);font-weight:500}
+.hero p{font-size:16px;line-height:1.8;color:#d6c6b9;max-width:590px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.live-proof{margin-top:28px;display:flex;gap:18px;flex-wrap:wrap}
+.proof{border:1px solid rgba(255,255,255,.14);background:rgba(18,10,7,.52);backdrop-filter:blur(12px);border-radius:16px;padding:12px 15px;display:flex;gap:11px;align-items:center}
+.proof i{color:var(--gold2)}
+.proof b{font-family:var(--serif);font-size:20px}
+.proof small{display:block;color:#9d8b7c;font-size:9px;text-transform:uppercase;letter-spacing:.12em}
+.hero-card{justify-self:end;width:390px;background:rgba(18,10,7,.78);border:1px solid rgba(255,255,255,.14);border-radius:28px;padding:18px;backdrop-filter:blur(18px);box-shadow:0 28px 80px rgba(0,0,0,.35);transform:rotate(2deg)}
+.hero-card img{width:100%;height:430px;object-fit:cover;object-position:left center;border-radius:20px}
+.hero-card footer{padding:14px 5px 3px;display:flex;justify-content:space-between;align-items:center}
+.hero-card footer strong{font-family:var(--serif);font-size:23px}
+.hero-card footer span{font-size:10px;color:#ae9988}
+.scroll{position:absolute;bottom:25px;left:50%;z-index:4;transform:translateX(-50%);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#8d7d70}
+
+.marquee{overflow:hidden;background:#efc163;color:#281409;border-top:1px solid #f7d693;border-bottom:1px solid #cb9841}
+.marquee-track{display:flex;width:max-content;animation:mq 28s linear infinite}
+.marquee-track span{white-space:nowrap;padding:14px 0;font-family:var(--serif);font-size:17px;font-weight:700;letter-spacing:.08em}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+.section{padding:105px 0}
+.heading{max-width:760px;margin-bottom:45px}
+.heading.center{text-align:center;margin-left:auto;margin-right:auto}
+.heading.center .kicker{justify-content:center}
+.heading h2{font-family:var(--serif);font-size:clamp(45px,5.5vw,72px);line-height:.98;letter-spacing:-.035em;margin:15px 0}
+.heading h2 em{color:var(--gold2);font-weight:500}
+.heading p{color:#9e8e82;line-height:1.75}
+
+.quick-actions{padding:28px 0;background:#f4e8d8;color:#2a180e}
+.quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.quick-card{background:#fff7ec;border:1px solid #dfcbb1;border-radius:17px;padding:18px;display:flex;align-items:center;gap:12px;transition:.25s}
+.quick-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(63,31,14,.08)}
+.quick-card i{width:40px;height:40px;border-radius:12px;background:#2a180e;color:#efc163;display:grid;place-items:center}
+.quick-card strong{font-size:12px;display:block}
+.quick-card small{font-size:9px;color:#8a6d59}
+
+.signature{background:#f4e8d8;color:#29170e}
+.signature .kicker{color:#7c5c41}
+.signature .heading p{color:#795f4f}
+.food-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;grid-template-rows:310px 310px;gap:14px}
+.food-card{position:relative;overflow:hidden;border-radius:22px;background:#1a100b}
+.food-card img{width:100%;height:100%;object-fit:cover;transition:.6s}
+.food-card:hover img{transform:scale(1.05)}
+.food-card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(12,7,5,.9))}
+.food-card .caption{position:absolute;left:20px;right:20px;bottom:18px;z-index:2;color:#fff}
+.food-card .caption small{text-transform:uppercase;letter-spacing:.15em;color:#d7b780;font-size:9px}
+.food-card .caption h3{font-family:var(--serif);font-size:27px;margin:4px 0 0}
+.food-card.big{grid-row:1/3}
+.food-card.wide{grid-column:2/4}
+.photo-note{margin-top:14px;font-size:10px;color:#92725e}
+
+.menu{background:#130b08}
+.menu-grid{display:grid;grid-template-columns:.86fr 1.14fr;gap:40px;align-items:start}
+.menu-board{position:sticky;top:105px;background:#23150e;border:1px solid rgba(255,255,255,.14);padding:13px;border-radius:24px}
+.menu-board img{width:100%;border-radius:16px;max-height:670px;object-fit:cover}
+.menu-board .zoom{position:absolute;right:28px;bottom:28px;width:48px;height:48px;border-radius:50%;border:0;background:#efc163;color:#281409;font-size:17px;cursor:pointer}
+.real-badge{position:absolute;left:26px;top:26px;background:#17100bd9;border:1px solid rgba(255,255,255,.16);padding:8px 11px;border-radius:999px;font-size:9px;letter-spacing:.12em;text-transform:uppercase}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.tab{border:1px solid rgba(255,255,255,.17);background:rgba(255,255,255,.03);color:#cdbbae;padding:10px 14px;border-radius:999px;cursor:pointer;font-size:11px;font-weight:800}
+.tab.active{background:#efc163;color:#281409;border-color:#efc163}
+.menu-list{display:grid;gap:10px}
+.item{border:1px solid rgba(255,255,255,.12);border-radius:17px;padding:16px 18px;display:flex;justify-content:space-between;gap:20px;align-items:center;background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.015))}
+.item h4{font-family:var(--serif);font-size:22px;margin:0 0 4px}
+.item p{font-size:10px;color:#94857a;margin:0}
+.price{font-family:var(--serif);font-size:22px;color:#efc163;white-space:nowrap}
+.source-note{font-size:9px;color:#7e7066;margin-top:14px}
+
+.story{background:#f4e8d8;color:#29170e}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.story-art{position:relative;min-height:590px}
+.story-art img{position:absolute;border-radius:24px;box-shadow:0 24px 60px rgba(40,19,9,.16);object-fit:cover}
+.story-art .a{width:72%;height:470px;left:0;top:0;object-position:left center}
+.story-art .b{width:58%;height:330px;right:0;bottom:0;object-position:right center;border:8px solid #f4e8d8}
+.story-copy .kicker{color:#77583f}
+.story-copy h2{font-family:var(--serif);font-size:clamp(45px,5vw,70px);line-height:.97;margin:16px 0}
+.story-copy h2 em{color:#9a4b2b}
+.story-copy p{color:#725b4b;line-height:1.75}
+.feature-list{display:grid;gap:11px;margin-top:28px}
+.feature{border-top:1px solid #d9c3a9;padding:14px 0;display:grid;grid-template-columns:38px 1fr;gap:12px}
+.feature i{color:#9a4b2b}
+.feature strong{display:block;font-size:12px}
+.feature span{font-size:10px;color:#846956}
+
+.booking{background:linear-gradient(150deg,#6c1711 0%,#3c0b08 48%,#160805 100%);position:relative;overflow:hidden}.booking:before{content:"";position:absolute;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(247,200,92,.18),transparent 66%);right:-160px;top:-210px}.booking-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:start;position:relative;z-index:1}.booking-copy h2{font-family:var(--serif);font-size:clamp(48px,5.4vw,72px);line-height:.95;margin:16px 0}.booking-copy p{color:#d4b9a9;line-height:1.75}.booking-types{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:28px}.booking-type{border:1px solid rgba(255,255,255,.14);border-radius:15px;padding:14px;background:rgba(255,255,255,.035)}.booking-type i{color:var(--gold2);margin-bottom:9px}.booking-type strong{display:block;font-size:11px}.booking-type small{color:#b69888;font-size:9px}.booking-form{background:#f8ead5;color:#2b130d;border-radius:26px;padding:28px;border:1px solid rgba(255,255,255,.22);box-shadow:0 28px 80px rgba(0,0,0,.28)}.booking-form h3{font-family:var(--serif);font-size:32px;margin:0 0 5px}.booking-form>p{font-size:10px;color:#856451;margin:0 0 22px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/3}.field label{font-size:9px;text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:#795742}.field input,.field select,.field textarea{width:100%;border:1px solid #d8bea0;background:#fff8ee;color:#2b130d;border-radius:12px;padding:12px 13px;outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:#b96d23;box-shadow:0 0 0 3px rgba(185,109,35,.11)}.field textarea{min-height:92px;resize:vertical}.booking-submit{width:100%;margin-top:14px;border:0}.booking-note{font-size:9px;color:#876a58;margin-top:10px;line-height:1.5}.success-hint{display:none;margin-top:10px;font-size:10px;color:#6f4b1f}.success-hint.show{display:block}.reviews{background:#120a07}
+.review-meta{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:28px}
+.rating-big{font-family:var(--serif);font-size:76px;color:#efc163;line-height:1}
+.stars{color:#efc163;letter-spacing:.12em}
+.review-meta small{color:#97877a}
+.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.review{border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:24px;background:rgba(255,255,255,.025)}
+.review .name{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.review h3{font-family:var(--serif);font-size:22px;margin:10px 0}
+.review p{color:#b1a196;font-size:12px;line-height:1.7}
+.review small{color:#7c6e65}
+
+.location{background:#f4e8d8;color:#29170e}
+.location-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:34px;align-items:stretch}
+.location-card{background:#fff7ec;border:1px solid #ddc9af;border-radius:24px;padding:30px}
+.location-card .kicker{color:#7a5b40}
+.location-card h2{font-family:var(--serif);font-size:52px;line-height:.95;margin:18px 0}
+.info{display:grid;gap:11px;margin-top:24px}
+.info-row{display:flex;gap:12px;padding:13px;border-radius:14px;background:#f7ead8}
+.info-row i{width:34px;color:#9b4b2a;padding-top:3px}
+.info-row strong{display:block;font-size:11px}
+.info-row span{font-size:10px;color:#775e4d;line-height:1.5}
+.map{min-height:520px;border-radius:24px;overflow:hidden;border:1px solid #ddc9af;position:relative;background:#2a130d}
+.map iframe{width:100%;height:100%;min-height:520px;border:0}
+.location-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.location .btn-outline{color:#2a180e;border-color:#bda78e}
+
+.compare-strip{background:linear-gradient(135deg,#7e2c1d,#43100e);padding:58px 0}
+.compare-grid{display:grid;grid-template-columns:1fr repeat(3,.7fr);gap:22px;align-items:center}
+.compare-grid h2{font-family:var(--serif);font-size:44px;margin:0}
+.compare-point{border-left:1px solid rgba(255,255,255,.23);padding-left:20px}
+.compare-point i{color:#efc163}
+.compare-point strong{display:block;margin-top:10px;font-size:12px}
+.compare-point small{color:#d8b9ad;font-size:10px;line-height:1.5}
+
+.cta{background:#0d0705;padding:90px 0}
+.cta-card{border:1px solid rgba(255,255,255,.12);border-radius:28px;padding:55px;background:radial-gradient(circle at 80% 20%,rgba(229,167,73,.16),transparent 28%),linear-gradient(145deg,#1d100b,#120a07);display:flex;justify-content:space-between;align-items:center;gap:30px}
+.cta-card h2{font-family:var(--serif);font-size:55px;margin:0}
+.cta-card p{color:#a8978a;max-width:650px}
+.cta-actions{display:flex;gap:10px;flex-wrap:wrap}
+
+footer{background:#080403;border-top:1px solid var(--line);padding:55px 0 22px}
+.footer-grid{display:grid;grid-template-columns:1.4fr .7fr 1fr 1fr;gap:35px}
+.footer-grid h4{font-family:var(--serif);font-size:18px;margin:0 0 12px}
+.footer-grid a,.footer-grid span,.footer-grid p{display:block;color:#8f7f73;font-size:10px;line-height:1.8}
+.footer-grid a:hover{color:#efc163}
+.footer-bottom{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;color:#695d54;font-size:9px}
+.floating-wa{position:fixed;right:20px;bottom:20px;z-index:95;width:57px;height:57px;border-radius:50%;display:grid;place-items:center;background:#20c563;color:#fff;font-size:26px;box-shadow:0 15px 40px rgba(32,197,99,.28);animation:pulse 2.2s infinite}
+@keyframes pulse{50%{transform:scale(1.08)}}
+.reveal{opacity:0;transform:translateY(24px);transition:.75s ease}
+.reveal.show{opacity:1;transform:none}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.86);z-index:120;display:none;align-items:center;justify-content:center;padding:24px}
+.modal.open{display:flex}
+.modal img{max-width:min(92vw,760px);max-height:88vh;border-radius:18px;box-shadow:0 30px 100px #000}
+.modal button{position:absolute;right:24px;top:20px;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:#18100dcc;color:#fff;font-size:20px}
+@media(max-width:980px){
+ .topbar{display:none}.nav{top:0}.nav-links,.nav-cta{display:none}.menu-toggle{display:block}
+ .nav-links.open{display:flex;position:absolute;top:74px;left:20px;right:20px;background:#160c08;border:1px solid var(--line);border-radius:18px;padding:22px;flex-direction:column;align-items:flex-start}
+ .hero-grid,.menu-grid,.story-grid,.location-grid,.booking-grid{grid-template-columns:1fr}
+ .hero-copy{padding-top:120px}.hero-card{justify-self:start;width:min(430px,95%);margin-bottom:80px}.hero-card img{height:360px}
+ .quick-grid{grid-template-columns:1fr 1fr}.food-grid{grid-template-columns:1fr 1fr;grid-template-rows:300px 300px 300px}.food-card.big{grid-row:auto}.food-card.wide{grid-column:1/3}
+ .menu-board{position:relative;top:auto;max-width:620px}.story-grid{gap:40px}.review-grid{grid-template-columns:1fr 1fr}
+ .compare-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}.cta-card{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:640px){
+ .container{width:min(100% - 26px,1180px)}.nav-inner{height:70px}.logo{min-width:0}.logo-copy strong{font-size:14px}.logo-mark{width:40px;height:40px}
+ .hero h1{font-size:58px}.hero p{font-size:14px}.hero-card{transform:none;width:100%}.hero-card img{height:310px}.video-credit{right:10px;bottom:10px;font-size:8px}
+ .section{padding:78px 0}.quick-grid{grid-template-columns:1fr}.booking-types,.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.food-grid{display:grid;grid-template-columns:1fr;grid-template-rows:repeat(3,290px)}.food-card.wide{grid-column:auto}
+ .story-art{min-height:470px}.story-art .a{height:370px}.story-art .b{height:245px}.review-grid{grid-template-columns:1fr}
+ .location-card h2,.cta-card h2{font-size:42px}.map,.map iframe{min-height:380px}.compare-grid{grid-template-columns:1fr}.compare-point{border-left:0;border-top:1px solid rgba(255,255,255,.2);padding:18px 0 0}
+ .footer-grid{grid-template-columns:1fr}.footer-bottom{flex-direction:column}.cta-card{padding:30px}.rating-big{font-size:62px}
+}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<div class="topbar"><div class="container"><span><i class="fa-solid fa-star"></i> 4.8 on Google Maps</span><span>Wadarvadi, Pune</span><span>Open 11:00 AM · Most days till 11:30 PM</span></div></div>
+
+<header class="nav">
+ <div class="container nav-inner">
+  <a href="#home" class="logo" aria-label="The Classic Biryani Home">
+   <img class="logo-img" src="assets/logo.png" alt="The Classic Biryani logo">
+   <span class="logo-copy"><strong>THE CLASSIC BIRYANI</strong><span>Fresh • Natural • Pune</span></span>
+  </a>
+  <nav class="nav-links">
+   <a href="#home">Home</a><a href="#specials">Food</a><a href="#menu">Menu</a><a href="#booking">Book Table</a><a href="#reviews">Reviews</a><a href="#visit">Visit</a>
+  </nav>
+  <a class="btn btn-gold nav-cta" href="https://wa.me/917350190999?text=Hi%20The%20Classic%20Biryani%2C%20I%20want%20to%20check%20today%27s%20menu%20and%20place%20an%20order." target="_blank"><i class="fa-brands fa-whatsapp"></i> Order on WhatsApp</a>
+  <button class="menu-toggle" aria-label="Open menu"><i class="fa-solid fa-bars"></i></button>
+ </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+ <div class="hero-photo">
+  <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="https://img02.restaurantguru.com/ca10-The-Classic-Biryani-Pune-meals.jpg">
+   <source src="https://videos.pexels.com/video-files/855289/855289-hd_1920_1080_25fps.mp4" type="video/mp4">
+  </video>
+  <span class="video-credit">Sample biryani cooking footage</span>
+ </div>
+ <div class="container hero-grid">
+  <div class="hero-copy reveal">
+   <img class="hero-logo" src="assets/logo.png" alt="The Classic Biryani">
+   <div class="kicker">Wadarvadi · Pune</div>
+   <h1>Fresh. Natural.<br><em>Classic Biryani.</em></h1>
+   <p>A bold, modern digital home for The Classic Biryani—bringing real menu favourites, real customer trust, direct WhatsApp ordering and the exact Google Maps location into one premium experience.</p>
+   <div class="hero-actions">
+    <a class="btn btn-gold" href="#menu">View Real Menu <i class="fa-solid fa-arrow-down"></i></a>
+    <a class="btn btn-outline" href="#booking"><i class="fa-solid fa-calendar-check"></i> Book a Table</a>
+   </div>
+   <div class="live-proof">
+    <div class="proof"><i class="fa-solid fa-star"></i><div><b>4.8</b><small>Google Maps rating</small></div></div>
+    <div class="proof"><i class="fa-solid fa-users"></i><div><b>265</b><small>Public Google reviews</small></div></div>
+    <div class="proof"><i class="fa-solid fa-bag-shopping"></i><div><b>Takeaway</b><small>Delivery available</small></div></div>
+   </div>
+  </div>
+  <div class="hero-card reveal">
+   <img src="https://img02.restaurantguru.com/c471-Restaurant-The-Classic-Biryani-dishes.jpg" alt="Real food photos from The Classic Biryani public restaurant listing" onerror="this.src='https://images.unsplash.com/photo-1563379926898-05f4575a45d8?auto=format&fit=crop&w=1100&q=88'">
+   <footer><div><strong>Real food. Real listing.</strong><span>Public restaurant photography</span></div><i class="fa-solid fa-bowl-rice"></i></footer>
+  </div>
+ </div>
+ <a class="scroll" href="#quick">Scroll to explore ↓</a>
+</section>
+
+<section class="marquee"><div class="marquee-track">
+ <span>CHICKEN BIRYANI ✦ MUTTON BIRYANI ✦ MUTTON THALI ✦ HANDMADE BHAKRI ✦ DELIVERY ✦ TAKEAWAY ✦ WADARVADI, PUNE ✦ </span>
+ <span>CHICKEN BIRYANI ✦ MUTTON BIRYANI ✦ MUTTON THALI ✦ HANDMADE BHAKRI ✦ DELIVERY ✦ TAKEAWAY ✦ WADARVADI, PUNE ✦ </span>
+</div></section>
+
+<section class="quick-actions" id="quick"><div class="container quick-grid">
+ <a class="quick-card" href="tel:+917350190999"><i class="fa-solid fa-phone"></i><div><strong>Call Restaurant</strong><small>+91 73501 90999</small></div></a>
+ <a class="quick-card" target="_blank" href="https://wa.me/917350190999?text=Hi%20The%20Classic%20Biryani%2C%20please%20share%20today%27s%20menu."><i class="fa-brands fa-whatsapp"></i><div><strong>WhatsApp Menu</strong><small>Ask today's availability</small></div></a>
+ <a class="quick-card" target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=The+Classic+Biryani%2C+Wadarvadi%2C+Pune&destination_place_id=ChIJhV0sMQG_wjsR4RBhwbyKpQk"><i class="fa-solid fa-location-arrow"></i><div><strong>Directions</strong><small>Open Google Maps</small></div></a>
+ <a class="quick-card" href="#booking"><i class="fa-solid fa-calendar-check"></i><div><strong>Book a Table</strong><small>Family, couple, group & party</small></div></a>
+</div></section>
+
+<section class="section signature" id="specials"><div class="container">
+ <div class="heading reveal"><div class="kicker">Real Restaurant Photography</div><h2>The food should be the <em>main character.</em></h2><p>The visual direction uses public photos associated with The Classic Biryani rather than generic stock photography wherever a verified business image was available.</p></div>
+ <div class="food-grid">
+  <article class="food-card big reveal"><img src="https://img02.restaurantguru.com/c89c-Restaurant-The-Classic-Biryani-meals.jpg" alt="Food at The Classic Biryani"><div class="caption"><small>Real listing photo</small><h3>Biryani & Raita</h3></div></article>
+  <article class="food-card wide reveal"><img src="https://img02.restaurantguru.com/c5f7-The-Classic-Biryani-Pune-food.jpg" alt="The Classic Biryani food photography"><div class="caption"><small>Real listing photo</small><h3>Classic Food Stories</h3></div></article>
+  <article class="food-card reveal"><img src="https://img02.restaurantguru.com/c471-Restaurant-The-Classic-Biryani-dishes.jpg" alt="Biryani dishes from The Classic Biryani"><div class="caption"><small>Real listing photo</small><h3>Fresh & Natural</h3></div></article>
+  <article class="food-card reveal"><img src="https://img02.restaurantguru.com/ca10-The-Classic-Biryani-Pune-meals.jpg" alt="Meals from The Classic Biryani"><div class="caption"><small>Real listing photo</small><h3>Made for Cravings</h3></div></article>
+ </div>
+ <div class="photo-note">Public business-listing images are used for this client sample. Final production should use owner-supplied originals wherever possible.
+ </div>
+</div></section>
+
+<section class="section menu" id="menu"><div class="container">
+ <div class="heading reveal"><div class="kicker">Real Menu Snapshot</div><h2>Browse what people can <em>actually order.</em></h2><p>Key prices below were transcribed from the restaurant's latest publicly indexed menu image. The original menu can be enlarged beside them.</p></div>
+ <div class="menu-grid">
+  <div class="menu-board reveal">
+   <span class="real-badge">Public menu image</span>
+   <img id="realMenuImage" src="https://menu02.restaurantguru.com/m7/The-Classic-Biryani-menu-tu0.jpg" alt="The Classic Biryani real menu">
+   <button class="zoom" id="openMenu" aria-label="Open menu full screen"><i class="fa-solid fa-expand"></i></button>
+  </div>
+  <div>
+   <div class="tabs reveal">
+    <button class="tab active" data-cat="biryani">Biryani</button>
+    <button class="tab" data-cat="thali">Thali</button>
+    <button class="tab" data-cat="sides">Sides</button>
+    <button class="tab" data-cat="bulk">Bulk Orders</button>
+   </div>
+   <div id="menuList" class="menu-list reveal"></div>
+   <div class="source-note">Menu/prices can change. WhatsApp confirmation is recommended before ordering.</div>
+  </div>
+ </div>
+</div></section>
+
+<section class="section story"><div class="container story-grid">
+ <div class="story-art reveal">
+  <img class="a" src="https://img02.restaurantguru.com/c471-Restaurant-The-Classic-Biryani-dishes.jpg" alt="Classic Biryani food">
+  <img class="b" src="https://img02.restaurantguru.com/c89c-Restaurant-The-Classic-Biryani-meals.jpg" alt="Classic Biryani meals">
+ </div>
+ <div class="story-copy reveal">
+  <div class="kicker">Built around real customer intent</div>
+  <h2>From Google discovery to <em>WhatsApp order.</em></h2>
+  <p>Instead of making visitors hunt through multiple apps, this concept prioritises the actions restaurant customers use most: menu, price, location, call, reviews and direct enquiry.</p>
+  <div class="feature-list">
+   <div class="feature"><i class="fa-solid fa-bowl-food"></i><div><strong>Menu-first browsing</strong><span>Real menu categories and pricing positioned high on the page.</span></div></div>
+   <div class="feature"><i class="fa-solid fa-location-dot"></i><div><strong>Maps built in</strong><span>Exact Wadarvadi location plus a one-tap directions link.</span></div></div>
+   <div class="feature"><i class="fa-brands fa-whatsapp"></i><div><strong>Direct conversion</strong><span>Every major CTA goes straight to the restaurant's public WhatsApp number.</span></div></div>
+  </div>
+ </div>
+</div></section>
+
+
+<section class="section booking" id="booking"><div class="container booking-grid">
+ <div class="booking-copy reveal">
+  <div class="kicker">Table & Party Booking</div>
+  <h2>Reserve the table for your <em>next meal together.</em></h2>
+  <p>Send a booking request directly to The Classic Biryani on WhatsApp. Choose a couple table, family table, group dining or party booking and the restaurant can confirm availability with you.</p>
+  <div class="booking-types">
+   <div class="booking-type"><i class="fa-solid fa-heart"></i><strong>Couple Table</strong><small>2 guests</small></div>
+   <div class="booking-type"><i class="fa-solid fa-people-roof"></i><strong>Family Table</strong><small>3–6 guests</small></div>
+   <div class="booking-type"><i class="fa-solid fa-users"></i><strong>Group Dining</strong><small>7–15 guests</small></div>
+   <div class="booking-type"><i class="fa-solid fa-champagne-glasses"></i><strong>Party Booking</strong><small>16+ guests / celebration</small></div>
+  </div>
+ </div>
+ <form class="booking-form reveal" id="bookingForm">
+  <h3>Booking Request</h3><p>No payment required here. Final table confirmation comes from the restaurant.</p>
+  <div class="form-grid">
+   <div class="field"><label for="bookingType">Booking type</label><select id="bookingType" required><option value="">Select</option><option>Couple Table</option><option>Family Table</option><option>Group Dining</option><option>Party Booking</option></select></div>
+   <div class="field"><label for="guests">Guests</label><input id="guests" type="number" min="1" max="100" placeholder="e.g. 4" required></div>
+   <div class="field"><label for="bookDate">Date</label><input id="bookDate" type="date" required></div>
+   <div class="field"><label for="bookTime">Preferred time</label><input id="bookTime" type="time" min="11:00" max="23:00" required></div>
+   <div class="field"><label for="guestName">Your name</label><input id="guestName" type="text" placeholder="Name" required></div>
+   <div class="field"><label for="guestPhone">Phone number</label><input id="guestPhone" type="tel" placeholder="Mobile number" required></div>
+   <div class="field full"><label for="occasion">Occasion / request</label><textarea id="occasion" placeholder="Birthday, family dinner, seating request, etc."></textarea></div>
+  </div>
+  <button class="btn btn-gold booking-submit" type="submit"><i class="fa-brands fa-whatsapp"></i> Send Booking Request</button>
+  <div class="booking-note">This sends a WhatsApp enquiry to +91 73501 90999. A request is not a confirmed reservation until the restaurant replies.</div>
+  <div class="success-hint" id="bookingHint">Opening WhatsApp with your booking details…</div>
+ </form>
+</div></section>
+<section class="section reviews" id="reviews"><div class="container">
+ <div class="heading reveal"><div class="kicker">Current Public Reputation</div><h2>Trust is already there. <em>The website should show it.</em></h2></div>
+ <div class="review-meta reveal">
+  <div class="rating-big">4.8</div>
+  <div><div class="stars">★★★★★</div><strong>265 public Google Maps reviews</strong><small style="display:block;margin-top:5px">Rating/review count can change over time.</small></div>
+ </div>
+ <div class="review-grid">
+  <article class="review reveal"><div class="name"><strong>Review highlight</strong><span class="stars">★★★★★</span></div><h3>Natural-taste focus</h3><p>A recent reviewer praised the handmade bhakri and specifically appreciated the natural taste and absence of artificial essence or colour.</p><small>Paraphrased from a public Google review surfaced by Restaurant Guru.</small></article>
+  <article class="review reveal"><div class="name"><strong>Review highlight</strong><span class="stars">★★★★★</span></div><h3>Biryani quality</h3><p>A customer described the biryani as good and also highlighted the restaurant's service, while encouraging the team to keep the quality consistent.</p><small>Paraphrased from a public Google review surfaced by Restaurant Guru.</small></article>
+  <article class="review reveal"><div class="name"><strong>Review highlight</strong><span class="stars">★★★★★</span></div><h3>Balanced spices</h3><p>Another customer noted that the spice level was not excessive and that the biryani had a distinct, enjoyable taste.</p><small>Paraphrased from a public Google review surfaced by Restaurant Guru.</small></article>
+ </div>
+</div></section>
+
+<section class="compare-strip"><div class="container compare-grid">
+ <div><div class="kicker">Designed after competitor research</div><h2>Less clutter. More appetite. Faster action.</h2></div>
+ <div class="compare-point"><i class="fa-solid fa-bag-shopping"></i><strong>Ordering-first UX</strong><small>Inspired by the strongest direct-order patterns used by larger biryani brands.</small></div>
+ <div class="compare-point"><i class="fa-solid fa-layer-group"></i><strong>Food categories</strong><small>Easy menu scanning without turning the page into a marketplace.</small></div>
+ <div class="compare-point"><i class="fa-solid fa-location-dot"></i><strong>Local-first trust</strong><small>Maps, current reviews, address and phone remain visible—not buried.</small></div>
+</div></section>
+
+<section class="section location" id="visit"><div class="container location-grid">
+ <div class="location-card reveal">
+  <div class="kicker">Visit The Classic Biryani</div>
+  <h2>Right here in <em>Wadarvadi.</em></h2>
+  <div class="info">
+   <div class="info-row"><i class="fa-solid fa-location-dot"></i><div><strong>Address</strong><span>The classic Biryani, Kalu Tamanna Kusalkar Rd, near by Dangi Patis, Wadarvadi, Pune, Maharashtra 411016</span></div></div>
+   <div class="info-row"><i class="fa-solid fa-clock"></i><div><strong>Opening hours</strong><span>Monday: 11 AM–11 PM<br>Tuesday–Sunday: 11 AM–11:30 PM</span></div></div>
+   <div class="info-row"><i class="fa-solid fa-phone"></i><div><strong>Phone</strong><span>+91 73501 90999</span></div></div>
+   <div class="info-row"><i class="fa-solid fa-motorcycle"></i><div><strong>Services</strong><span>Delivery · Takeaway</span></div></div>
+  </div>
+  <div class="location-actions">
+   <a class="btn btn-gold" target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=The+Classic+Biryani%2C+Wadarvadi%2C+Pune&destination_place_id=ChIJhV0sMQG_wjsR4RBhwbyKpQk"><i class="fa-solid fa-route"></i> Directions</a>
+   <a class="btn btn-outline" href="tel:+917350190999"><i class="fa-solid fa-phone"></i> Call</a>
+  </div>
+ </div>
+ <div class="map reveal">
+  <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen src="https://maps.google.com/maps?q=The%20Classic%20Biryani%2C%20Kalu%20Tamanna%20Kusalkar%20Rd%2C%20Wadarvadi%2C%20Pune%20411016&t=&z=15&ie=UTF8&iwloc=&output=embed" title="Google Map showing The Classic Biryani in Wadarvadi Pune"></iframe>
+  <div style="position:absolute;right:18px;top:18px;z-index:3;background:rgba(255,247,236,.9);color:#5b321d;padding:8px 12px;border-radius:999px;font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase">Live map preview</div>
+  <a class="btn btn-gold" style="position:absolute;left:18px;bottom:18px;z-index:3" target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=The+Classic+Biryani%2C+Wadarvadi%2C+Pune&destination_place_id=ChIJhV0sMQG_wjsR4RBhwbyKpQk"><i class="fa-solid fa-route"></i> Open in Google Maps</a>
+ </div>
+</div></section>
+
+<section class="cta"><div class="container">
+ <div class="cta-card reveal">
+  <div><div class="kicker">Hungry?</div><h2>Ask today's menu on WhatsApp.</h2><p>Use a direct message instead of sending customers through multiple screens. They can ask about biryani, thalis, family quantities, availability or directions instantly.</p></div>
+  <div class="cta-actions">
+   <a class="btn btn-gold" target="_blank" href="https://wa.me/917350190999?text=Hi%20The%20Classic%20Biryani%2C%20I%20found%20you%20online.%20Please%20share%20today%27s%20available%20menu%20and%20ordering%20details."><i class="fa-brands fa-whatsapp"></i> Start WhatsApp Order</a>
+   <a class="btn btn-outline" href="tel:+917350190999"><i class="fa-solid fa-phone"></i> Call Now</a>
+  </div>
+ </div>
+</div></section>
+</main>
+
+<footer><div class="container">
+ <div class="footer-grid">
+  <div><a href="#home" class="logo"><img class="logo-img" src="assets/logo.png" alt="The Classic Biryani logo"><span class="logo-copy"><strong>THE CLASSIC BIRYANI</strong><span>Fresh • Natural • Pune</span></span></a><p style="margin-top:15px">Premium concept website created around the restaurant's real public business information.</p></div>
+  <div><h4>Explore</h4><a href="#specials">Food</a><a href="#menu">Menu</a><a href="#booking">Book Table</a><a href="#reviews">Reviews</a><a href="#visit">Location</a></div>
+  <div><h4>Contact</h4><a href="tel:+917350190999">+91 73501 90999</a><a target="_blank" href="https://wa.me/917350190999">WhatsApp</a><span>Wadarvadi, Pune 411016</span></div>
+  <div><h4>Social</h4><span>Official Instagram/Facebook handle was not reliably verifiable from indexed public sources, so no fake profile has been linked.</span></div>
+ </div>
+ <div class="footer-bottom"><span>© 2026 The Classic Biryani · Website concept preview</span><span>Designed as a sample by Sati Technologies</span></div>
+</div></footer>
+
+<a class="floating-wa" target="_blank" href="https://wa.me/917350190999?text=Hi%20The%20Classic%20Biryani%2C%20please%20share%20today%27s%20menu." aria-label="WhatsApp The Classic Biryani"><i class="fa-brands fa-whatsapp"></i></a>
+
+<div class="modal" id="menuModal"><button id="closeMenu" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button><img src="https://menu02.restaurantguru.com/m7/The-Classic-Biryani-menu-tu0.jpg" alt="The Classic Biryani full menu"></div>
+
+<script>
+const nav=document.querySelector('.nav'), toggle=document.querySelector('.menu-toggle'), links=document.querySelector('.nav-links');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>24));
+toggle.addEventListener('click',()=>{links.classList.toggle('open');document.body.classList.toggle('menu-open');toggle.innerHTML=links.classList.contains('open')?'<i class="fa-solid fa-xmark"></i>':'<i class="fa-solid fa-bars"></i>'});
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');document.body.classList.remove('menu-open');toggle.innerHTML='<i class="fa-solid fa-bars"></i>'}));
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+const data={
+ biryani:[
+  ['Chicken Biryani — Half','Half portion shown on public menu.','₹100'],
+  ['Chicken Biryani — Full','Full portion shown on public menu.','₹150'],
+  ['Mutton Biryani','Bollai / Bokad noted on menu.','₹250'],
+  ['Veg Biryani','Vegetarian biryani.','₹120']
+ ],
+ thali:[
+  ['Mutton Fry Thali','Mutton fry, mutton curry, alani rice, bhakri/chapati.','₹350'],
+  ['Chicken Fry Thali','Chicken fry, chicken curry, alani rice, bhakri/chapati.','₹250'],
+  ['Anda Thali','Anda curry, egg masala, rice, bhakri/chapati.','₹150']
+ ],
+ sides:[
+  ['Mutton Fry Plate','Bollai / Bokad.','₹250'],
+  ['Chicken Fry Plate','Standalone chicken fry plate.','₹120'],
+  ['Boiled Masala Egg — 2','Two eggs.','₹60'],
+  ['Egg Omelette','Egg preparation.','₹50'],
+  ['Bhakri','Fresh bread.','₹20'],
+  ['Chapati','Fresh bread.','₹20']
+ ],
+ bulk:[
+  ['Mutton Biryani — 1 KG','Bulk order menu listing.','₹1850'],
+  ['Chicken Biryani — 1 KG','Bulk order menu listing.','₹1200'],
+  ['Veg Biryani — 1 KG','Bulk order menu listing.','₹900']
+ ]
+};
+const list=document.getElementById('menuList');
+function render(cat){
+ list.innerHTML=data[cat].map(x=>`<article class="item"><div><h4>${x[0]}</h4><p>${x[1]}</p></div><span class="price">${x[2]}</span></article>`).join('');
+}
+render('biryani');
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');render(b.dataset.cat)}));
+
+const modal=document.getElementById('menuModal');
+document.getElementById('openMenu').addEventListener('click',()=>modal.classList.add('open'));
+document.getElementById('closeMenu').addEventListener('click',()=>modal.classList.remove('open'));
+modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open')});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')modal.classList.remove('open')});
+
+const dateInput=document.getElementById('bookDate');
+if(dateInput){const d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());dateInput.min=d.toISOString().split('T')[0];}
+const bookingForm=document.getElementById('bookingForm');
+bookingForm?.addEventListener('submit',e=>{
+ e.preventDefault();
+ const type=document.getElementById('bookingType').value;
+ const guests=document.getElementById('guests').value;
+ const date=document.getElementById('bookDate').value;
+ const time=document.getElementById('bookTime').value;
+ const name=document.getElementById('guestName').value.trim();
+ const phone=document.getElementById('guestPhone').value.trim();
+ const occasion=document.getElementById('occasion').value.trim();
+ const msg=`Hi The Classic Biryani, I would like to request a table booking.%0A%0A*Booking Type:* ${encodeURIComponent(type)}%0A*Guests:* ${encodeURIComponent(guests)}%0A*Date:* ${encodeURIComponent(date)}%0A*Preferred Time:* ${encodeURIComponent(time)}%0A*Name:* ${encodeURIComponent(name)}%0A*Contact:* ${encodeURIComponent(phone)}%0A*Occasion / Request:* ${encodeURIComponent(occasion||'None')}%0A%0APlease confirm availability. Thank you.`;
+ document.getElementById('bookingHint').classList.add('show');
+ window.open(`https://wa.me/917350190999?text=${msg}`,'_blank','noopener');
+});
+
+const heroVideo=document.querySelector('.hero-video');
+heroVideo?.addEventListener('error',()=>{heroVideo.style.display='none';});
+setTimeout(()=>{if(heroVideo && heroVideo.readyState<2){heroVideo.style.display='none';}},5000);
+const mapFrame=document.querySelector('.map iframe');
+mapFrame?.addEventListener('error',()=>{
+ const note=document.createElement('div');
+ note.style.cssText='position:absolute;inset:0;display:grid;place-items:center;padding:24px;text-align:center;color:#fff;background:linear-gradient(135deg,#35170f,#1a0b07)';
+ note.innerHTML='<div><h3 style="font-family:var(--serif);font-size:34px;margin:0 0 10px">Map Preview</h3><p style="margin:0 0 14px;color:#e3c7ab">If the embedded map is blocked in your browser preview, use the button below to open Google Maps directly.</p></div>';
+ mapFrame.parentElement.appendChild(note);
+});
+
+</script>
+</body>
+</html>
