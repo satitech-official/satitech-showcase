@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0B4AA2">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#0b4aa2"><title>E-Seva Betul — Complete MVP</title>
+<style>
+:root{--blue:#0b4aa2;--blue2:#1574e8;--cyan:#0ec5e8;--orange:#ff9f2f;--bg:#f4f7fb;--ink:#13233f;--muted:#70809b;--line:#dfe8f4;--card:#fff;--green:#16a66a;--red:#e94e4e;--shadow:0 12px 35px rgba(20,55,105,.12)}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:#dfeafa;color:var(--ink)}
+button,input,textarea,select{font:inherit}.wrap{min-height:100vh;display:grid;place-items:center;padding:18px}.app{width:min(460px,100%);height:min(940px,96vh);background:var(--bg);border-radius:34px;overflow:hidden;box-shadow:0 30px 80px rgba(13,46,95,.25);position:relative;border:7px solid #0c1730}
+.scroll{height:100%;overflow:auto;padding-bottom:92px;scrollbar-width:none}.scroll::-webkit-scrollbar{display:none}
+.hero{background:linear-gradient(145deg,#083672,#0b58bc 60%,#12b7dc);color:#fff;padding:22px 20px 20px;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;border:1px solid #ffffff33;right:-120px;top:-80px;box-shadow:0 0 0 34px #ffffff10,0 0 0 68px #ffffff08}
+.row{display:flex;gap:10px;align-items:center}.between{justify-content:space-between}.brand{font-size:23px;font-weight:900;letter-spacing:-.7px}.brand i{font-style:normal;color:#69edff}
+.role-switch{display:flex;background:#ffffff1c;border:1px solid #ffffff33;border-radius:12px;padding:3px;position:relative;z-index:2}.role-switch button{border:0;color:#e8f5ff;background:transparent;border-radius:9px;padding:6px 9px;font-size:10px;font-weight:800;cursor:pointer}.role-switch button.active{background:#fff;color:#0b4aa2}
+.loc{font-size:12px;opacity:.88;margin-top:16px;position:relative;z-index:2}.hero h1{font-size:28px;line-height:1.06;margin:8px 0 14px;max-width:320px;position:relative;z-index:2}.search{background:#fff;color:#7c8aa3;border-radius:17px;padding:13px 14px;position:relative;z-index:2;box-shadow:0 12px 30px #032b6c30}
+.content{padding:18px}.section{margin:4px 0 13px;font-weight:900;font-size:17px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.svc{background:#fff;border:1px solid var(--line);padding:11px 5px;border-radius:17px;text-align:center;cursor:pointer;box-shadow:0 6px 18px #16406d0c}.svc .ico{height:44px;width:44px;margin:auto;border-radius:14px;display:grid;place-items:center;font-size:22px;background:linear-gradient(145deg,#ecf4ff,#e9fbff)}.svc b{display:block;font-size:10px;margin-top:7px}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:15px;margin:11px 0;box-shadow:0 7px 20px #1d4e820b}.banner{background:linear-gradient(135deg,#fff2df,#fff 62%);border-color:#ffe0b6}.badge{display:inline-block;padding:5px 8px;border-radius:99px;background:#eafaf3;color:#0c8d5c;font-weight:800;font-size:10px}.badge.blue{background:#e9f2ff;color:#0b5bbd}.badge.orange{background:#fff0dc;color:#b96a00}
+.btn{border:0;background:linear-gradient(135deg,var(--blue2),var(--cyan));color:#fff;border-radius:15px;padding:13px 15px;font-weight:900;cursor:pointer;box-shadow:0 8px 22px #156bd52e}.btn.secondary{background:#eef5ff;color:#0b5fc5;box-shadow:none}.btn.danger{background:#fff1f1;color:#c43a3a;box-shadow:none}.btn.small{padding:8px 10px;font-size:11px}.w100{width:100%}
+.bottom{position:absolute;left:0;right:0;bottom:0;height:76px;background:#fffffff2;backdrop-filter:blur(14px);border-top:1px solid var(--line);display:flex;justify-content:space-around;align-items:center;z-index:30}.nav{text-align:center;color:#7f8ca3;font-size:10px;cursor:pointer}.nav span{display:block;font-size:21px}.nav.active{color:var(--blue);font-weight:900}
+.screen{display:none}.screen.active{display:block}.head{position:sticky;top:0;z-index:15;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:13px 16px}.back{width:38px;height:38px;border:0;border-radius:12px;background:#edf4ff;font-size:20px;color:#0b4aa2}.head h2{font-size:18px;margin:0}.field{background:#fff;border:1px solid var(--line);border-radius:15px;padding:12px 13px;margin:10px 0}.field label{display:block;font-size:10px;color:var(--muted);margin-bottom:5px}.field input,.field textarea,.field select{width:100%;border:0;outline:0;background:transparent;color:var(--ink)}.field textarea{min-height:72px;resize:none}
+.choice{display:grid;grid-template-columns:1fr 1fr;gap:10px}.choice .opt{background:#fff;border:2px solid var(--line);border-radius:15px;padding:12px;cursor:pointer;font-size:12px}.choice .opt.sel{border-color:#15a0e6;background:#eefaff}
+.provider{display:flex;gap:11px;align-items:center}.avatar{width:52px;height:52px;border-radius:16px;background:linear-gradient(145deg,#0b4aa2,#10b8dc);color:#fff;display:grid;place-items:center;font-weight:900}.meta{flex:1}.meta b{display:block}.sub{font-size:11px;color:var(--muted);margin-top:3px}.price{font-weight:900;color:#0b58ba}.statgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{background:#fff;border:1px solid var(--line);border-radius:17px;padding:14px}.stat strong{display:block;font-size:22px;margin-top:4px}.listrow{display:flex;justify-content:space-between;align-items:center;gap:10px}.divider{height:1px;background:var(--line);margin:12px 0}.toast{position:absolute;bottom:88px;left:50%;transform:translateX(-50%);background:#0c1830;color:#fff;border-radius:12px;padding:10px 13px;font-size:11px;opacity:0;transition:.2s;z-index:50;white-space:nowrap}.toast.show{opacity:1}.hidden{display:none!important}
+.login{padding:24px 20px}.logoMark{width:72px;height:72px;border-radius:22px;background:linear-gradient(145deg,#0b4aa2,#12c0e6);display:grid;place-items:center;color:white;font-size:30px;font-weight:900;box-shadow:var(--shadow);margin:44px auto 18px}.login h1{text-align:center;margin:0}.login p{text-align:center;color:var(--muted);font-size:13px}
+.progress{display:flex;gap:6px}.progress i{height:7px;flex:1;background:#dbe6f4;border-radius:99px}.progress i.on{background:#13ae77}
+@media(max-width:520px){.wrap{padding:0}.app{width:100%;height:100vh;border:0;border-radius:0}}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="app"><div class="scroll">
+<section class="screen active" id="login">
+  <div class="login">
+    <div class="logoMark">E</div><h1>E-Seva</h1><p>Trusted local services for Betul</p>
+    <div class="card banner"><b>🔧 Plumber • ⚡ Electrician • 🧹 Cleaning</b><div class="sub">Book verified nearby professionals in a few taps.</div></div>
+    <div class="field"><label>Mobile number</label><input id="mobile" inputmode="numeric" maxlength="10" placeholder="Enter 10-digit number"></div>
+    <button class="btn w100" onclick="loginDemo()">Continue</button>
+    <div class="sub" style="text-align:center;margin-top:12px">Free MVP mode: OTP is simulated locally.</div>
+  </div>
+</section>
+
+<section class="screen" id="home">
+  <div class="hero">
+    <div class="row between"><div class="brand">E-<i>Seva</i></div><div class="role-switch">
+      <button class="active" onclick="setRole('customer',this)">Customer</button><button onclick="setRole('partner',this)">Partner</button><button onclick="setRole('admin',this)">Admin</button>
+    </div></div>
+    <div class="loc">📍 Betul, Madhya Pradesh</div><h1>Ghar ke kaam, ab aasaan.</h1><div class="search">🔎 Search services near you</div>
+  </div>
+  <div class="content" id="customerHome">
+    <div class="section">Popular services</div><div class="grid" id="services"></div>
+    <div class="card banner"><span class="badge orange">BETUL LAUNCH</span><h3 style="margin:10px 0 4px">Fast local help</h3><div class="sub">Nearby professionals • clear visit charge • booking tracking</div></div>
+    <div class="section">Recommended near you</div>
+    <div class="card provider"><div class="avatar">RS</div><div class="meta"><b>Rahul Sahu</b><div class="sub">Electrician • 1.2 km • 248 jobs</div></div><span class="badge">★ 4.9</span></div>
+    <div class="card provider"><div class="avatar">VK</div><div class="meta"><b>Vijay Kushwaha</b><div class="sub">Plumber • 0.8 km • 311 jobs</div></div><span class="badge">★ 4.8</span></div>
+  </div>
+  <div class="content hidden" id="partnerHome">
+    <div class="row between"><div><div class="section">Partner dashboard</div><div class="sub">Demo professional: Rahul Sahu</div></div><span class="badge">ONLINE</span></div>
+    <div class="statgrid"><div class="stat"><span class="sub">Today's jobs</span><strong id="pJobs">2</strong></div><div class="stat"><span class="sub">Today's earnings</span><strong id="pEarn">₹860</strong></div></div>
+    <div class="section" style="margin-top:18px">Incoming job</div>
+    <div class="card" id="incoming"><span class="badge blue">NEW REQUEST</span><h3>Electrician • Switch repair</h3><div class="sub">Civil Lines, Betul • 1.4 km away</div><div class="divider"></div><div class="listrow"><b>Visit ₹149</b><div class="row"><button class="btn small danger" onclick="rejectJob()">Reject</button><button class="btn small" onclick="acceptJob()">Accept</button></div></div></div>
+    <div class="section">Recent jobs</div><div id="partnerJobs"></div>
+  </div>
+  <div class="content hidden" id="adminHome">
+    <div class="section">Admin overview</div>
+    <div class="statgrid"><div class="stat"><span class="sub">Total bookings</span><strong id="aBookings">0</strong></div><div class="stat"><span class="sub">Commission</span><strong id="aCommission">₹0</strong></div><div class="stat"><span class="sub">Partners</span><strong>32</strong></div><div class="stat"><span class="sub">Active now</span><strong>18</strong></div></div>
+    <div class="section" style="margin-top:18px">Bookings</div><div id="adminBookings"></div>
+  </div>
+</section>
+
+<section class="screen" id="service">
+ <div class="head"><button class="back" onclick="go('home')">‹</button><h2 id="serviceTitle">Book service</h2></div>
+ <div class="content">
+  <div class="card"><span class="badge">Verified professionals</span><h2 id="serviceName" style="margin:10px 0 4px"></h2><div class="sub">Describe your problem and choose when you need help.</div></div>
+  <div class="field"><label>Problem</label><textarea id="problem" placeholder="Example: kitchen tap leaking"></textarea></div>
+  <div class="field"><label>Address</label><input id="address" value="Betul, Madhya Pradesh"></div>
+  <div class="section">When?</div><div class="choice"><div class="opt sel" onclick="selectOpt(this)">⚡ Now<br><small>30–60 min*</small></div><div class="opt" onclick="selectOpt(this)">🗓 Schedule<br><small>Choose later</small></div></div>
+  <div class="field"><label>Photo (optional)</label><input type="file" accept="image/*"></div>
+  <button class="btn w100" onclick="findPros()">Find professionals</button>
+ </div>
+</section>
+
+<section class="screen" id="providers"><div class="head"><button class="back" onclick="go('service')">‹</button><h2>Choose professional</h2></div><div class="content" id="providerList"></div></section>
+
+<section class="screen" id="confirm"><div class="head"><button class="back" onclick="go('providers')">‹</button><h2>Confirm booking</h2></div><div class="content">
+  <div class="card provider"><div class="avatar" id="cAv">RS</div><div class="meta"><b id="cName">Rahul Sahu</b><div class="sub" id="cMeta"></div></div><span class="badge">★ 4.9</span></div>
+  <div class="card"><div class="section">Price summary</div><div class="listrow"><span>Visit charge</span><b>₹149</b></div><div class="divider"></div><div class="listrow"><span>Repair/material</span><span class="sub">After inspection</span></div></div>
+  <div class="section">Payment</div><div class="choice"><div class="opt sel" onclick="selectOpt(this)">💵 Cash<br><small>After service</small></div><div class="opt" onclick="selectOpt(this)">📱 UPI<br><small>Production-ready slot</small></div></div>
+  <button class="btn w100" style="margin-top:16px" onclick="confirmBooking()">Confirm booking</button>
+</div></section>
+
+<section class="screen" id="track"><div class="head"><button class="back" onclick="go('home')">‹</button><h2>Track booking</h2></div><div class="content">
+ <div class="card"><span class="badge blue" id="bookingId">#ES0000</span><h3 id="trackTitle">Professional assigned</h3><div class="sub" id="trackSub"></div></div>
+ <div class="card"><div class="section">Progress</div><div class="progress"><i class="on"></i><i class="on"></i><i></i><i></i></div><div class="sub" style="margin-top:10px">Confirmed → On the way → Started → Completed</div></div>
+ <div class="row"><button class="btn secondary w100" onclick="toast('Calling partner… demo')">📞 Call</button><button class="btn w100" onclick="completeDemo()">Mark complete</button></div>
+</div></section>
+
+<section class="screen" id="bookings"><div class="head"><h2>My bookings</h2></div><div class="content" id="bookingList"></div></section>
+<section class="screen" id="profile"><div class="head"><h2>Profile</h2></div><div class="content">
+ <div class="card provider"><div class="avatar">NB</div><div class="meta"><b>Customer</b><div class="sub" id="profileMobile">Mobile verified</div></div></div>
+ <div class="card"><b>🏠 Saved address</b><div class="sub">Betul, Madhya Pradesh</div></div>
+ <div class="card"><b>🛡 Safety</b><div class="sub">Partner verification, job-start OTP and complaint flow planned for production backend.</div></div>
+</div></section>
+</div>
+
+<div class="bottom hidden" id="bottomNav"><div class="nav active" data-target="home" onclick="go('home')"><span>⌂</span>Home</div><div class="nav" data-target="bookings" onclick="go('bookings')"><span>▣</span>Bookings</div><div class="nav" onclick="toast('Search from Home services')"><span>⌕</span>Search</div><div class="nav" data-target="profile" onclick="go('profile')"><span>☺</span>Profile</div></div>
+<div class="toast" id="toast"></div>
+</div></div>
+
+<script>
+const categories=[['🔧','Plumber'],['⚡','Electrician'],['🧹','Home Cleaning'],['🪚','Carpenter'],['🛠️','Appliance Repair'],['💧','RO Repair'],['🎨','Painter'],['🐜','Pest Control']];
+const pros=[
+{name:'Rahul Sahu',rating:4.9,dist:'1.2 km',jobs:248,initials:'RS'},
+{name:'Vijay Kushwaha',rating:4.8,dist:'0.8 km',jobs:311,initials:'VK'},
+{name:'Amit Yadav',rating:4.7,dist:'1.9 km',jobs:186,initials:'AY'}];
+let currentService='Electrician',chosen=pros[0],role='customer';
+let bookings=JSON.parse(localStorage.getItem('esevaBookings')||'[]');
+document.getElementById('services').innerHTML=categories.map(x=>`<div class="svc" onclick="openService('${x[1]}')"><div class="ico">${x[0]}</div><b>${x[1]}</b></div>`).join('');
+function loginDemo(){const m=document.getElementById('mobile').value.trim();if(m.length<10){toast('Enter a 10-digit mobile number');return}localStorage.setItem('esevaMobile',m);document.getElementById('profileMobile').textContent='+91 '+m;document.getElementById('bottomNav').classList.remove('hidden');go('home');renderAll()}
+function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelector('.scroll').scrollTo(0,0);document.querySelectorAll('.nav').forEach(n=>n.classList.toggle('active',n.dataset.target===id));if(id==='bookings')renderBookings()}
+function openService(name){currentService=name;document.getElementById('serviceTitle').textContent='Book '+name;document.getElementById('serviceName').textContent=name;go('service')}
+function selectOpt(el){el.parentElement.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));el.classList.add('sel')}
+function findPros(){document.getElementById('providerList').innerHTML=`<div class="sub">Nearby demo professionals for ${currentService}</div>`+pros.map((p,i)=>`<div class="card provider"><div class="avatar">${p.initials}</div><div class="meta"><b>${p.name}</b><div class="sub">${currentService} • ${p.dist}</div><div class="sub">${p.jobs} completed jobs</div></div><div style="text-align:right"><span class="badge">★ ${p.rating}</span><div class="price" style="margin:8px 0">₹149 visit</div><button class="btn small" onclick="choose(${i})">Select</button></div></div>`).join('');go('providers')}
+function choose(i){chosen=pros[i];document.getElementById('cAv').textContent=chosen.initials;document.getElementById('cName').textContent=chosen.name;document.getElementById('cMeta').textContent=`${currentService} • ${chosen.dist}`;go('confirm')}
+function confirmBooking(){const id='ES'+String(Date.now()).slice(-5);const b={id,service:currentService,provider:chosen.name,charge:149,status:'On the way',time:new Date().toLocaleString()};bookings.unshift(b);save();document.getElementById('bookingId').textContent='#'+id;document.getElementById('trackSub').textContent=`${chosen.name} • ${currentService}`;go('track');renderAll();toast('Booking confirmed')}
+function completeDemo(){if(bookings[0]){bookings[0].status='Completed';save();renderAll();toast('Job completed');go('bookings')}}
+function renderBookings(){const box=document.getElementById('bookingList');if(!bookings.length){box.innerHTML='<div class="card" style="text-align:center;padding:30px"><b>No bookings yet</b><div class="sub">Book your first E-Seva service from Home.</div></div>';return}box.innerHTML=bookings.map(b=>`<div class="card"><div class="listrow"><span class="badge ${b.status==='Completed'?'':'blue'}">${b.status}</span><b>#${b.id}</b></div><h3 style="margin:10px 0 4px">${b.service}</h3><div class="sub">${b.provider} • ${b.time}</div><div class="divider"></div><div class="listrow"><b>₹${b.charge}</b><span class="sub">Visit charge</span></div></div>`).join('')}
+function setRole(r,el){role=r;document.querySelectorAll('.role-switch button').forEach(x=>x.classList.remove('active'));el.classList.add('active');document.getElementById('customerHome').classList.toggle('hidden',r!=='customer');document.getElementById('partnerHome').classList.toggle('hidden',r!=='partner');document.getElementById('adminHome').classList.toggle('hidden',r!=='admin');renderAll()}
+function acceptJob(){const el=document.getElementById('incoming');el.innerHTML='<span class="badge">ACCEPTED</span><h3>Electrician • Switch repair</h3><div class="sub">Civil Lines, Betul • Customer: Demo User</div><div class="divider"></div><button class="btn w100" onclick="toast(\'Navigation opened in demo mode\')">Start navigation</button>';toast('Job accepted')}
+function rejectJob(){document.getElementById('incoming').innerHTML='<b>No incoming jobs</b><div class="sub">New nearby requests will appear here.</div>'}
+function renderPartner(){const box=document.getElementById('partnerJobs');box.innerHTML=bookings.slice(0,3).map(b=>`<div class="card"><div class="listrow"><b>${b.service}</b><span class="badge">${b.status}</span></div><div class="sub">${b.provider} • #${b.id}</div></div>`).join('')||'<div class="card"><div class="sub">No linked demo jobs yet.</div></div>'}
+function renderAdmin(){document.getElementById('aBookings').textContent=bookings.length;document.getElementById('aCommission').textContent='₹'+Math.round(bookings.reduce((s,b)=>s+b.charge,0)*0.15);document.getElementById('adminBookings').innerHTML=bookings.slice(0,5).map(b=>`<div class="card"><div class="listrow"><b>#${b.id}</b><span class="badge">${b.status}</span></div><div class="sub">${b.service} • ${b.provider}</div><div class="divider"></div><div class="listrow"><span>Visit ₹${b.charge}</span><span class="price">Commission ₹${Math.round(b.charge*.15)}</span></div></div>`).join('')||'<div class="card"><div class="sub">No bookings recorded yet.</div></div>'}
+function renderAll(){renderBookings();renderPartner();renderAdmin()}
+function save(){localStorage.setItem('esevaBookings',JSON.stringify(bookings))}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1700)}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js').catch(()=>{})}
+const saved=localStorage.getItem('esevaMobile');if(saved){document.getElementById('mobile').value=saved;document.getElementById('profileMobile').textContent='+91 '+saved}
+renderAll();
+</script>
+
+<script>
+(function(){
+ const KEY='eseva_plus_v1';
+ let plus=JSON.parse(localStorage.getItem(KEY)||'{"complaints":[],"notifications":[],"coupons":[{"code":"BETUL50","off":50}],"partner":{"online":false,"kyc":"Pending"}}');
+ const save=()=>localStorage.setItem(KEY,JSON.stringify(plus));
+ window.esevaPlus=plus;
+ window.addEventListener('load',()=>{
+   const p=document.getElementById('profile');
+   if(p){const c=p.querySelector('.content');c.insertAdjacentHTML('beforeend',`<div class="card"><b>🎁 Coupon</b><div class="sub">Use <b>BETUL50</b> on demo bookings for ₹50 off in the complete build.</div></div><div class="card"><b>🆘 Complaints</b><div class="sub">Service issue, pricing issue, partner behavior and payment complaints are supported.</div><button class="btn secondary" style="margin-top:10px" onclick="openSupportPlus()">Open support</button></div><div class="card"><b>📲 Installable PWA</b><div class="sub">Add this app to your home screen from the browser menu. Offline cache is included.</div></div>`)}
+   const ph=document.getElementById('partnerHome'); if(ph){ph.insertAdjacentHTML('beforeend',`<div class="card"><b>Partner tools</b><div class="sub">KYC status: <span id="kycState">${plus.partner.kyc}</span></div><div class="row" style="margin-top:10px"><button class="btn secondary" onclick="partnerKycPlus()">KYC / services</button><button class="btn" onclick="toggleOnlinePlus()" id="onlinePlus">${plus.partner.online?'Go Offline':'Go Online'}</button></div></div>`)}
+   const ah=document.getElementById('adminHome'); if(ah){ah.insertAdjacentHTML('beforeend',`<div class="card"><b>Admin add-ons</b><div class="sub">Coupons, complaints, partner KYC and commission controls.</div><div class="row" style="margin-top:10px"><button class="btn secondary" onclick="adminCouponsPlus()">Coupons</button><button class="btn secondary" onclick="adminComplaintsPlus()">Complaints</button></div></div>`)}
+ });
+ window.openSupportPlus=function(){document.querySelector('.toast').textContent='Support ticket form opened';document.querySelector('.toast').classList.add('show');setTimeout(()=>document.querySelector('.toast').classList.remove('show'),1500);const msg=prompt('Describe your issue');if(msg){plus.complaints.unshift({id:'C'+Date.now().toString().slice(-5),text:msg,status:'Open'});save();alert('Complaint submitted successfully.')}}
+ window.partnerKycPlus=function(){const s=prompt('Primary service (e.g. Electrician)','Electrician');if(s){plus.partner.kyc='Submitted';plus.partner.service=s;save();document.getElementById('kycState').textContent='Submitted';alert('KYC/profile saved locally.')}}
+ window.toggleOnlinePlus=function(){plus.partner.online=!plus.partner.online;save();const b=document.getElementById('onlinePlus');if(b)b.textContent=plus.partner.online?'Go Offline':'Go Online';}
+ window.adminCouponsPlus=function(){alert('Active coupon: BETUL50 — ₹50 off. Admin coupon engine is enabled in local MVP.')}
+ window.adminComplaintsPlus=function(){alert(plus.complaints.length?plus.complaints.map(x=>x.id+' • '+x.status+' • '+x.text).join('\n'):'No complaints yet.')}
+ if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});
+})();
+</script>
+</body></html>
