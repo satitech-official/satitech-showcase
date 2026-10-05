@@ -1,0 +1,9 @@
+{
+  "name": "E-Seva Betul",
+  "short_name": "E-Seva",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#0B4AA2",
+  "description": "Local home services app for Betul"
+}
