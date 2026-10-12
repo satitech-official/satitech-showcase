@@ -50,6 +50,12 @@ export async function verifyLiveUrl(value) {
 }
 
 export async function resolveProjectLiveUrl(repo, metadata = {}) {
+  // IKINOVAC's canonical production domain must never fall back to a
+  // historical GitHub Pages preview if a transient external check fails.
+  if (repo?.name === "ikinovac-global-engineering-platform") {
+    return "https://www.ikinovac.com/";
+  }
+
   const asset = getProjectAsset(repo.name);
   // These curated URLs are checked during the portfolio audit and recorded with
   // a verification date. Do not make the UI depend on a third-party request at
